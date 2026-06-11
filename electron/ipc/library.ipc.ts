@@ -44,7 +44,7 @@ export function registerLibraryIPC() {
                 : undefined,
               year: metadata.common.year,
               genre: metadata.common.genre?.[0],
-              dateAdded: new Date().toISOString(),
+              addedAt: new Date().toISOString(),
             };
             songs.push(song);
           } catch (error) {
