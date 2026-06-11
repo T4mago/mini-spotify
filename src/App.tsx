@@ -4,10 +4,13 @@ import { Sidebar } from './components/layout/Sidebar';
 import { MainContent } from './components/layout/MainContent';
 import { PlayerBar } from './components/player/PlayerBar';
 import { useTheme } from './hooks/useTheme';
+import { useKeyboard } from './hooks/useKeyboard';
 
 function App() {
   const [activeView, setActiveView] = useState('library');
   const { loadTheme } = useTheme();
+  
+  useKeyboard();
   
   useEffect(() => {
     loadTheme();
