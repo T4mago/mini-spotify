@@ -23,7 +23,7 @@ export function MainContent({ activeView }: MainContentProps) {
             />
           );
         }
-        return <PlaylistList onSelectPlaylist={setSelectedPlaylistId} />;
+        return <PlaylistList selectedPlaylistId={selectedPlaylistId} onSelectPlaylist={setSelectedPlaylistId} />;
       case 'search':
         return <div className="p-4">Search (coming soon)</div>;
       case 'settings':

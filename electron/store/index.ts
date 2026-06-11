@@ -32,7 +32,7 @@ export const store = {
     playlists.push(playlist);
     playlistStore.set(undefined, playlists);
   },
-  updatePlaylist: (id: string, updates: Partial<Playlist>): void => {
+  updatePlaylist: (id: string, updates: Omit<Partial<Playlist>, 'id'>): void => {
     const playlists = playlistStore.get(undefined, []);
     const index = playlists.findIndex(p => p.id === id);
     if (index !== -1) {

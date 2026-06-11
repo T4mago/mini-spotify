@@ -21,7 +21,7 @@ export function registerPlaylistIPC() {
     return playlist;
   });
   
-  ipcMain.handle('playlist:update', (_, { id, updates }: { id: string; updates: Partial<Playlist> }) => {
+  ipcMain.handle('playlist:update', (_, { id, updates }: { id: string; updates: Omit<Partial<Playlist>, 'id'> }) => {
     store.updatePlaylist(id, updates);
     return true;
   });

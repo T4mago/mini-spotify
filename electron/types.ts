@@ -5,7 +5,7 @@ export interface Song {
   album: string;
   duration: number;
   filePath: string;
-  coverPath?: string;
+  coverArt?: string;
   addedAt: string;
 }
 
@@ -14,7 +14,7 @@ export interface Playlist {
   name: string;
   description?: string;
   songIds: string[];
-  coverPath?: string;
+  coverArt?: string;
   createdAt: string;
   updatedAt: string;
 }

@@ -4,11 +4,12 @@ import { CreatePlaylistModal } from './CreatePlaylistModal';
 import { FiPlus, FiMusic } from 'react-icons/fi';
 
 interface PlaylistListProps {
+  selectedPlaylistId: string | null;
   onSelectPlaylist: (id: string) => void;
 }
 
-export function PlaylistList({ onSelectPlaylist }: PlaylistListProps) {
-  const { playlists, loadPlaylists, createPlaylist, selectedPlaylistId } = usePlaylist();
+export function PlaylistList({ selectedPlaylistId, onSelectPlaylist }: PlaylistListProps) {
+  const { playlists, loadPlaylists, createPlaylist } = usePlaylist();
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   
   useEffect(() => {

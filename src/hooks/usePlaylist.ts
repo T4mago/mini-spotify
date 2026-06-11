@@ -5,21 +5,18 @@ import { ipc } from '../lib/ipc';
 interface PlaylistState {
   playlists: Playlist[];
   isLoading: boolean;
-  selectedPlaylistId: string | null;
   
   loadPlaylists: () => Promise<void>;
   createPlaylist: (name: string, description?: string) => Promise<Playlist>;
-  updatePlaylist: (id: string, updates: Partial<Playlist>) => Promise<void>;
+  updatePlaylist: (id: string, updates: Omit<Partial<Playlist>, 'id'>) => Promise<void>;
   deletePlaylist: (id: string) => Promise<void>;
   addSongToPlaylist: (playlistId: string, songId: string) => Promise<void>;
   removeSongFromPlaylist: (playlistId: string, songId: string) => Promise<void>;
-  selectPlaylist: (id: string | null) => void;
 }
 
 export const usePlaylist = create<PlaylistState>((set) => ({
   playlists: [],
   isLoading: false,
-  selectedPlaylistId: null,
   
   loadPlaylists: async () => {
     set({ isLoading: true });
@@ -32,9 +29,14 @@ export const usePlaylist = create<PlaylistState>((set) => ({
   },
   
   createPlaylist: async (name, description) => {
-    const playlist = await ipc.invoke<Playlist>('playlist:create', { name, description });
-    set((state) => ({ playlists: [...state.playlists, playlist] }));
-    return playlist;
+    try {
+      const playlist = await ipc.invoke<Playlist>('playlist:create', { name, description });
+      set((state) => ({ playlists: [...state.playlists, playlist] }));
+      return playlist;
+    } catch (error) {
+      console.error('Failed to create playlist:', error);
+      throw error;
+    }
   },
   
   updatePlaylist: async (id, updates) => {
@@ -47,34 +49,46 @@ export const usePlaylist = create<PlaylistState>((set) => ({
   },
   
   deletePlaylist: async (id) => {
-    await ipc.invoke('playlist:delete', id);
-    set((state) => ({
-      playlists: state.playlists.filter(p => p.id !== id),
-      selectedPlaylistId: state.selectedPlaylistId === id ? null : state.selectedPlaylistId,
-    }));
+    try {
+      await ipc.invoke('playlist:delete', id);
+      set((state) => ({
+        playlists: state.playlists.filter(p => p.id !== id),
+      }));
+    } catch (error) {
+      console.error('Failed to delete playlist:', error);
+      throw error;
+    }
   },
   
   addSongToPlaylist: async (playlistId, songId) => {
-    await ipc.invoke('playlist:addSong', { playlistId, songId });
-    set((state) => ({
-      playlists: state.playlists.map(p =>
-        p.id === playlistId && !p.songIds.includes(songId)
-          ? { ...p, songIds: [...p.songIds, songId] }
-          : p
-      ),
-    }));
+    try {
+      await ipc.invoke('playlist:addSong', { playlistId, songId });
+      set((state) => ({
+        playlists: state.playlists.map(p =>
+          p.id === playlistId && !p.songIds.includes(songId)
+            ? { ...p, songIds: [...p.songIds, songId] }
+            : p
+        ),
+      }));
+    } catch (error) {
+      console.error('Failed to add song to playlist:', error);
+      throw error;
+    }
   },
   
   removeSongFromPlaylist: async (playlistId, songId) => {
-    await ipc.invoke('playlist:removeSong', { playlistId, songId });
-    set((state) => ({
-      playlists: state.playlists.map(p =>
-        p.id === playlistId
-          ? { ...p, songIds: p.songIds.filter(id => id !== songId) }
-          : p
-      ),
-    }));
+    try {
+      await ipc.invoke('playlist:removeSong', { playlistId, songId });
+      set((state) => ({
+        playlists: state.playlists.map(p =>
+          p.id === playlistId
+            ? { ...p, songIds: p.songIds.filter(id => id !== songId) }
+            : p
+        ),
+      }));
+    } catch (error) {
+      console.error('Failed to remove song from playlist:', error);
+      throw error;
+    }
   },
-  
-  selectPlaylist: (id) => set({ selectedPlaylistId: id }),
 }));
