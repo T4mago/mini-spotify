@@ -8,6 +8,7 @@
     "dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && cross-env NODE_ENV=development electron .\"",
     "build": "vite build && electron-builder",
     "build:win": "vite build && electron-builder --win",
+    "build:portable": "vite build && electron-builder --win --dir",
     "preview": "vite preview",
     "lint": "eslint src electron --ext .ts,.tsx",
     "electron:dev": "electron .",
