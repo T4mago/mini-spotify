@@ -4,6 +4,7 @@ import { useAudio } from './useAudio';
 export function useKeyboard() {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.repeat) return;
       // Don't trigger if typing in input
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
         return;
@@ -27,7 +28,7 @@ export function useKeyboard() {
           if (e.ctrlKey || e.metaKey) {
             previous();
           } else {
-            seek(currentTime - 10);
+            seek(Math.max(0, currentTime - 10));
           }
           break;
         case 'ArrowUp':
