@@ -19,7 +19,7 @@ export function SongRow({ song, onRemove }: SongRowProps) {
   
   return (
     <div 
-      className={`flex items-center gap-4 p-3 rounded-lg cursor-pointer transition-all
+      className={`flex items-center gap-4 p-3 rounded-lg cursor-pointer transition-all group
         ${isActive ? 'bg-[var(--accent-glow)]' : 'hover:bg-[var(--bg-glass-hover)]'}`}
       onClick={() => play(song)}
     >
