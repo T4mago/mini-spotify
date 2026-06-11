@@ -51,9 +51,14 @@ export const useSpotify = create<SpotifyState>((set) => ({
 
   matchTracks: async (tracks) => {
     set({ importProgress: 75 });
-    const matches = await ipc.invoke<ImportMatch[]>('spotify:matchTracks', { tracks });
-    set({ matchedTracks: matches, importProgress: 100, isImporting: false });
-    return matches;
+    try {
+      const matches = await ipc.invoke<ImportMatch[]>('spotify:matchTracks', { tracks });
+      set({ matchedTracks: matches, importProgress: 100, isImporting: false });
+      return matches;
+    } catch (error) {
+      set({ isImporting: false, importProgress: 0 });
+      throw error;
+    }
   },
 
   createPlaylist: async (name, description, songIds, spotifyUrl) => {

@@ -127,15 +127,16 @@ export class SpotifyService {
     let tracks: any[] = [];
     let offset = 0;
     const limit = 100;
+    let maxIterations = 10; // Max 1000 tracks (100 per page)
 
-    while (true) {
+    while (maxIterations-- > 0) {
       const response = await fetch(
         `https://api.spotify.com/v1/playlists/${playlistId}/tracks?offset=${offset}&limit=${limit}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
       const data = await response.json() as any;
-      tracks.push(...data.items.map((item: any) => item.track));
+      tracks.push(...data.items.map((item: any) => item.track).filter(Boolean));
 
       if (data.next) offset += limit;
       else break;
