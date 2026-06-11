@@ -1,11 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Header } from './components/layout/Header';
 import { Sidebar } from './components/layout/Sidebar';
 import { MainContent } from './components/layout/MainContent';
 import { PlayerBar } from './components/player/PlayerBar';
+import { useTheme } from './hooks/useTheme';
 
 function App() {
   const [activeView, setActiveView] = useState('library');
+  const { loadTheme } = useTheme();
+  
+  useEffect(() => {
+    loadTheme();
+  }, [loadTheme]);
   
   return (
     <div className="h-screen flex flex-col bg-[var(--bg-primary)] text-[var(--text-primary)]">

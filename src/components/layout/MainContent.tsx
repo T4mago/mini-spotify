@@ -3,6 +3,7 @@ import { LibraryBrowser } from '../library/LibraryBrowser';
 import { PlaylistList } from '../playlist/PlaylistList';
 import { PlaylistView } from '../playlist/PlaylistView';
 import { SearchBar } from '../search/SearchBar';
+import { SettingsPanel } from '../settings/SettingsPanel';
 
 interface MainContentProps {
   activeView: string;
@@ -28,7 +29,7 @@ export function MainContent({ activeView }: MainContentProps) {
       case 'search':
         return <SearchBar />;
       case 'settings':
-        return <div className="p-4">Settings (coming soon)</div>;
+        return <SettingsPanel />;
       default:
         return <LibraryBrowser />;
     }
