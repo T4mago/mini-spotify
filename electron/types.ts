@@ -24,9 +24,9 @@ export interface Playlist {
 
 export interface Lyrics {
   songId: string;
-  lyrics: string;
-  source: string;
-  fetchedAt: string;
+  content: string;
+  language?: string;
+  updatedAt: string;
 }
 
 export interface SpotifyTrack {

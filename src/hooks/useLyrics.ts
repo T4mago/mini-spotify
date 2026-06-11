@@ -31,8 +31,13 @@ export const useLyrics = create<LyricsState>((set) => ({
       content,
       updatedAt: new Date().toISOString(),
     };
-    await ipc.invoke('lyrics:save', lyrics);
-    set({ currentLyrics: lyrics });
+    try {
+      await ipc.invoke('lyrics:save', lyrics);
+      set({ currentLyrics: lyrics });
+    } catch (error) {
+      console.error('Failed to save lyrics:', error);
+      throw error;
+    }
   },
   
   clearLyrics: () => set({ currentLyrics: null }),
