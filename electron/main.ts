@@ -6,6 +6,7 @@ import { registerLibraryIPC } from './ipc/library.ipc';
 import { registerAudioIPC } from './ipc/audio.ipc';
 import { registerPlaylistIPC } from './ipc/playlist.ipc';
 import { registerSpotifyIPC } from './ipc/spotify.ipc';
+import { registerLyricsIPC } from './ipc/lyrics.ipc';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -45,6 +46,7 @@ registerLibraryIPC();
 registerAudioIPC();
 registerPlaylistIPC();
 registerSpotifyIPC();
+registerLyricsIPC();
 
 app.whenReady().then(createWindow);
 
