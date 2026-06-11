@@ -1,16 +1,29 @@
+import { useState } from 'react';
 import { LibraryBrowser } from '../library/LibraryBrowser';
+import { PlaylistList } from '../playlist/PlaylistList';
+import { PlaylistView } from '../playlist/PlaylistView';
 
 interface MainContentProps {
   activeView: string;
 }
 
 export function MainContent({ activeView }: MainContentProps) {
+  const [selectedPlaylistId, setSelectedPlaylistId] = useState<string | null>(null);
+  
   const renderView = () => {
     switch (activeView) {
       case 'library':
         return <LibraryBrowser />;
       case 'playlists':
-        return <div className="p-4">Playlists (coming soon)</div>;
+        if (selectedPlaylistId) {
+          return (
+            <PlaylistView 
+              playlistId={selectedPlaylistId} 
+              onBack={() => setSelectedPlaylistId(null)} 
+            />
+          );
+        }
+        return <PlaylistList onSelectPlaylist={setSelectedPlaylistId} />;
       case 'search':
         return <div className="p-4">Search (coming soon)</div>;
       case 'settings':

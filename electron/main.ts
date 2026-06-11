@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 import { registerSettingsIPC } from './ipc/settings.ipc';
 import { registerLibraryIPC } from './ipc/library.ipc';
 import { registerAudioIPC } from './ipc/audio.ipc';
+import { registerPlaylistIPC } from './ipc/playlist.ipc';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -41,6 +42,7 @@ function createWindow() {
 registerSettingsIPC();
 registerLibraryIPC();
 registerAudioIPC();
+registerPlaylistIPC();
 
 app.whenReady().then(createWindow);
 
