@@ -3,6 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { registerSettingsIPC } from './ipc/settings.ipc';
 import { registerLibraryIPC } from './ipc/library.ipc';
+import { registerAudioIPC } from './ipc/audio.ipc';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -39,6 +40,7 @@ function createWindow() {
 // Register IPC handlers
 registerSettingsIPC();
 registerLibraryIPC();
+registerAudioIPC();
 
 app.whenReady().then(createWindow);
 
