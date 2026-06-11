@@ -11,6 +11,7 @@ interface AudioState {
   repeat: 'off' | 'all' | 'one';
   queue: Song[];
   history: Song[];
+  seekRequest: number | null;
   
   play: (song: Song) => void;
   pause: () => void;
@@ -37,6 +38,7 @@ export const useAudio = create<AudioState>((set, get) => ({
   repeat: 'off',
   queue: [],
   history: [],
+  seekRequest: null,
   
   play: (song) => {
     const { currentSong } = get();
@@ -59,7 +61,7 @@ export const useAudio = create<AudioState>((set, get) => ({
     }
   },
   
-  seek: (time) => set({ currentTime: time }),
+  seek: (time) => set({ currentTime: time, seekRequest: time }),
   
   setVolume: (volume) => set({ volume: Math.max(0, Math.min(100, volume)) }),
   
@@ -69,9 +71,12 @@ export const useAudio = create<AudioState>((set, get) => ({
     
     const currentIndex = queue.findIndex(s => s.id === currentSong.id);
     let nextIndex = currentIndex + 1;
-    
+
     if (shuffle) {
-      nextIndex = Math.floor(Math.random() * queue.length);
+      const availableIndices = queue
+        .map((_, i) => i)
+        .filter(i => i !== currentIndex);
+      nextIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
     } else if (nextIndex >= queue.length) {
       if (repeat === 'all') {
         nextIndex = 0;
@@ -80,7 +85,12 @@ export const useAudio = create<AudioState>((set, get) => ({
         return;
       }
     }
-    
+
+    if (repeat === 'one') {
+      get().play(currentSong);
+      return;
+    }
+
     get().play(queue[nextIndex]);
   },
   

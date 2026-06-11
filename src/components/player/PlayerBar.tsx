@@ -6,7 +6,7 @@ import { VolumeControl } from './VolumeControl';
 import { FiMusic } from 'react-icons/fi';
 
 export function PlayerBar() {
-  const { currentSong, isPlaying, volume, setCurrentTime, setDuration } = useAudio();
+  const { currentSong, isPlaying, volume, seekRequest, setCurrentTime, setDuration } = useAudio();
   const audioRef = useRef<HTMLAudioElement>(null);
   
   useEffect(() => {
@@ -31,6 +31,13 @@ export function PlayerBar() {
       }
     }
   }, [isPlaying]);
+  
+  useEffect(() => {
+    if (seekRequest !== null && audioRef.current) {
+      audioRef.current.currentTime = seekRequest;
+      useAudio.setState({ seekRequest: null });
+    }
+  }, [seekRequest]);
   
   const handleTimeUpdate = () => {
     if (audioRef.current) {
