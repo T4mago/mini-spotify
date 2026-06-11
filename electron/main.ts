@@ -2,6 +2,7 @@ import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { registerSettingsIPC } from './ipc/settings.ipc';
+import { registerLibraryIPC } from './ipc/library.ipc';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -37,6 +38,7 @@ function createWindow() {
 
 // Register IPC handlers
 registerSettingsIPC();
+registerLibraryIPC();
 
 app.whenReady().then(createWindow);
 
