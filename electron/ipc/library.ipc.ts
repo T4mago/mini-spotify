@@ -1,14 +1,15 @@
 import { ipcMain, dialog, BrowserWindow } from 'electron';
 import { parseFile } from 'music-metadata';
 import { v4 as uuidv4 } from 'uuid';
-import { store } from '../store';
-import { Song } from '../types';
+import { store } from '../store/index.js';
+import { Song } from '../types.js';
 import path from 'path';
 
 export function registerLibraryIPC() {
   // Scan folder for audio files
   ipcMain.handle('library:scan', async () => {
-    const result = await dialog.showOpenDialog(BrowserWindow.getFocusedWindow()!, {
+    const focusedWindow = BrowserWindow.getFocusedWindow();
+    const result = await dialog.showOpenDialog(focusedWindow ?? BrowserWindow.getAllWindows()[0], {
       properties: ['openDirectory'],
       title: 'Select Music Folder',
     });
@@ -44,7 +45,7 @@ export function registerLibraryIPC() {
                 : undefined,
               year: metadata.common.year,
               genre: metadata.common.genre?.[0],
-              addedAt: new Date().toISOString(),
+              dateAdded: new Date().toISOString(),
             };
             songs.push(song);
           } catch (error) {

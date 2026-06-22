@@ -24,6 +24,10 @@ interface AudioState {
   toggleShuffle: () => void;
   toggleRepeat: () => void;
   setQueue: (songs: Song[]) => void;
+  addToQueue: (song: Song) => void;
+  playNext: (song: Song) => void;
+  removeFromQueue: (index: number) => void;
+  clearQueue: () => void;
   setCurrentTime: (time: number) => void;
   setDuration: (duration: number) => void;
 }
@@ -43,7 +47,7 @@ export const useAudio = create<AudioState>((set, get) => ({
   play: (song) => {
     const { currentSong } = get();
     if (currentSong) {
-      set((state) => ({ history: [...state.history, currentSong] }));
+      set((state) => ({ history: [...state.history.slice(-49), currentSong] }));
     }
     set({ currentSong: song, isPlaying: true, currentTime: 0 });
   },
@@ -67,12 +71,21 @@ export const useAudio = create<AudioState>((set, get) => ({
   
   next: () => {
     const { queue, currentSong, shuffle, repeat } = get();
-    if (!currentSong) return;
+    if (!currentSong || queue.length === 0) return;
+    
+    if (repeat === 'one') {
+      get().play(currentSong);
+      return;
+    }
     
     const currentIndex = queue.findIndex(s => s.id === currentSong.id);
     let nextIndex = currentIndex + 1;
 
     if (shuffle) {
+      if (queue.length <= 1) {
+        set({ isPlaying: false });
+        return;
+      }
       const availableIndices = queue
         .map((_, i) => i)
         .filter(i => i !== currentIndex);
@@ -86,16 +99,11 @@ export const useAudio = create<AudioState>((set, get) => ({
       }
     }
 
-    if (repeat === 'one') {
-      get().play(currentSong);
-      return;
-    }
-
     get().play(queue[nextIndex]);
   },
   
   previous: () => {
-    const { history, currentTime } = get();
+    const { history, currentTime, currentSong } = get();
     if (currentTime > 3) {
       set({ currentTime: 0 });
       return;
@@ -109,6 +117,8 @@ export const useAudio = create<AudioState>((set, get) => ({
         currentTime: 0,
         isPlaying: true,
       }));
+    } else if (currentSong) {
+      set({ currentTime: 0 });
     }
   },
   
@@ -119,6 +129,30 @@ export const useAudio = create<AudioState>((set, get) => ({
   })),
   
   setQueue: (songs) => set({ queue: songs }),
+  
+  addToQueue: (song) => set((state) => ({ queue: [...state.queue, song] })),
+  
+  playNext: (song) => {
+    const { currentSong, queue } = get();
+    if (!currentSong) {
+      set({ queue: [song] });
+      get().play(song);
+      return;
+    }
+    const idx = queue.findIndex(s => s.id === currentSong.id);
+    const insertAt = idx >= 0 ? idx + 1 : queue.length;
+    const newQueue = [...queue];
+    newQueue.splice(insertAt, 0, song);
+    set({ queue: newQueue });
+  },
+  
+  removeFromQueue: (index) => set((state) => {
+    const newQueue = [...state.queue];
+    newQueue.splice(index, 1);
+    return { queue: newQueue };
+  }),
+  
+  clearQueue: () => set({ queue: [] }),
   
   setCurrentTime: (time) => set({ currentTime: time }),
   

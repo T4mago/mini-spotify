@@ -1,6 +1,6 @@
 import { ipcMain } from 'electron';
-import { store } from '../store';
-import { Lyrics } from '../types';
+import { store } from '../store/index.js';
+import { Lyrics } from '../types.js';
 
 export function registerLyricsIPC() {
   ipcMain.handle('lyrics:get', (_, songId: string) => {

@@ -5,9 +5,12 @@ node_modules/
 dist/
 *.js.map
 
-# Electron
+# Electron compiled output
 electron/*.js
 electron/*.d.ts
+electron/**/*.js
+electron/**/*.d.ts
+!electron/builder.js
 
 # Environment variables
 .env

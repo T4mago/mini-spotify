@@ -1,5 +1,5 @@
 import { ipcMain } from 'electron';
-import { store } from '../store';
+import { store } from '../store/index.js';
 
 export function registerSettingsIPC() {
   ipcMain.handle('settings:get', () => {

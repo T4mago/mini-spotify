@@ -9,6 +9,7 @@ export interface Song {
   year?: number;
   genre?: string;
   spotifyId?: string;
+  streamingUri?: string;
   dateAdded: string;
 }
 

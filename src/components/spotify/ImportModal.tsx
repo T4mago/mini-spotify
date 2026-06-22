@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSpotify } from '../../hooks/useSpotify';
-import { FiX, FiExternalLink } from 'react-icons/fi';
+import { FiX, FiExternalLink, FiMusic } from 'react-icons/fi';
 
 interface ImportModalProps {
   isOpen: boolean;
@@ -11,84 +11,43 @@ interface ImportModalProps {
 export function ImportModal({ isOpen, onClose, onComplete }: ImportModalProps) {
   const [url, setUrl] = useState('');
   const [error, setError] = useState('');
-  const { importPlaylist, matchTracks, isImporting } = useSpotify();
+  const { importPlaylist, isImporting } = useSpotify();
 
   if (!isOpen) return null;
 
   const handleImport = async () => {
-    if (!url.trim()) {
-      setError('Please enter a Spotify playlist URL');
-      return;
-    }
-
-    const playlistIdMatch = url.match(/playlist\/([a-zA-Z0-9]+)/);
-    if (!playlistIdMatch) {
-      setError('Invalid Spotify playlist URL');
-      return;
-    }
-
+    if (!url.trim()) { setError('Please enter a URL'); return; }
+    if (!url.match(/playlist\/([a-zA-Z0-9]+)/)) { setError('Invalid Spotify URL'); return; }
     try {
       setError('');
-      const { tracks } = await importPlaylist(url);
-      await matchTracks(tracks);
+      await importPlaylist(url);
       onComplete();
-    } catch (err: any) {
-      setError(err.message || 'Failed to import playlist');
-    }
+    } catch (err: any) { setError(err.message || 'Failed'); }
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <div className="glass-panel w-96 p-6">
-        <div className="flex items-center justify-between mb-6">
-          <h3 className="text-xl font-bold">Import from Spotify</h3>
-          <button onClick={onClose} className="p-2 hover:bg-[var(--bg-glass-hover)] rounded">
-            <FiX />
-          </button>
+    <div className="fixed inset-0 bg-black/20 backdrop-blur-sm flex items-center justify-center z-50 animate-fade">
+      <div className="glass-strong w-[420px] rounded-3xl overflow-hidden animate-slide-up">
+        <div className="flex items-center justify-between px-6 py-5 border-b border-[rgba(0,0,0,0.04)]">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-[#1db954] flex items-center justify-center"><FiMusic size={16} className="text-white" /></div>
+            <h3 className="font-bold text-sm text-[var(--text-primary)]">Import from Spotify</h3>
+          </div>
+          <button onClick={onClose} className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-[rgba(0,0,0,0.05)] text-[var(--text-secondary)] transition-all"><FiX size={16} /></button>
         </div>
-
-        <div className="mb-4">
-          <p className="text-sm text-[var(--text-secondary)] mb-2">
-            Paste a Spotify playlist URL to import its metadata
-          </p>
-          <input
-            type="text"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            className="w-full px-4 py-2 rounded-lg bg-[var(--bg-glass)] border border-[var(--border-glass)] focus:border-[var(--accent-color)] outline-none"
-            placeholder="https://open.spotify.com/playlist/..."
-            autoFocus
-          />
-        </div>
-
-        {error && (
-          <p className="text-red-500 text-sm mb-4">{error}</p>
-        )}
-
-        <div className="flex justify-end gap-3">
-          <button
-            onClick={onClose}
-            className="px-4 py-2 rounded-lg hover:bg-[var(--bg-glass-hover)] transition-colors"
-          >
-            Cancel
-          </button>
-          <button
-            onClick={handleImport}
-            disabled={isImporting || !url.trim()}
-            className="px-4 py-2 rounded-lg bg-[var(--accent-color)] text-white disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90 transition-opacity flex items-center gap-2"
-          >
-            {isImporting ? (
-              <>
-                <div className="animate-spin rounded-full w-4 h-4 border-2 border-white border-t-transparent" />
-                Importing...
-              </>
-            ) : (
-              <>
-                <FiExternalLink />
-                Import
-              </>
-            )}
-          </button>
+        <div className="p-6">
+          <label className="block text-[10px] font-bold text-[var(--text-secondary)] mb-2 uppercase tracking-wider">Playlist URL</label>
+          <input type="text" value={url} onChange={(e) => { setUrl(e.target.value); setError(''); }}
+            className="w-full px-4 py-3 rounded-2xl glass-solid border-none focus:ring-2 focus:ring-[var(--accent)]/30 outline-none text-sm transition-all placeholder:text-[var(--text-tertiary)]"
+            placeholder="https://open.spotify.com/playlist/..." autoFocus />
+          {error && <p className="text-red-500 text-xs mt-2">{error}</p>}
+          <div className="flex justify-end gap-3 mt-5">
+            <button onClick={onClose} className="glass-interactive px-5 py-2.5 rounded-full text-xs font-semibold text-[var(--text-secondary)]">Cancel</button>
+            <button onClick={handleImport} disabled={isImporting || !url.trim()}
+              className="bg-[var(--text-primary)] text-white px-5 py-2.5 rounded-full text-xs font-semibold flex items-center gap-1.5 disabled:opacity-40 hover:scale-105 transition-transform shadow-md">
+              {isImporting ? <><div className="animate-spin w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full" /> Importing...</> : <><FiExternalLink size={13} /> Import</>}
+            </button>
+          </div>
         </div>
       </div>
     </div>

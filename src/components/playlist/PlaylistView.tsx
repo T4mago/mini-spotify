@@ -2,7 +2,7 @@ import { usePlaylist } from '../../hooks/usePlaylist';
 import { useLibrary } from '../../hooks/useLibrary';
 import { useAudio } from '../../hooks/useAudio';
 import { SongRow } from '../library/SongRow';
-import { FiArrowLeft, FiPlay } from 'react-icons/fi';
+import { FiArrowLeft, FiPlay, FiMusic } from 'react-icons/fi';
 
 interface PlaylistViewProps {
   playlistId: string;
@@ -15,18 +15,9 @@ export function PlaylistView({ playlistId, onBack }: PlaylistViewProps) {
   const { setQueue } = useAudio();
   
   const playlist = playlists.find(p => p.id === playlistId);
+  if (!playlist) return <div className="glass-strong flex-1 rounded-3xl flex items-center justify-center"><p className="text-[var(--text-secondary)]">Not found</p></div>;
   
-  if (!playlist) {
-    return (
-      <div className="h-full flex items-center justify-center">
-        <p>Playlist not found</p>
-      </div>
-    );
-  }
-  
-  const playlistSongs = playlist.songIds
-    .map(id => songs.find(s => s.id === id))
-    .filter(Boolean) as typeof songs;
+  const playlistSongs = playlist.songIds.map(id => songs.find(s => s.id === id)).filter(Boolean) as typeof songs;
   
   const handlePlayAll = () => {
     if (playlistSongs.length > 0) {
@@ -36,69 +27,54 @@ export function PlaylistView({ playlistId, onBack }: PlaylistViewProps) {
   };
   
   return (
-    <div className="h-full flex flex-col">
+    <div className="glass-strong flex-1 rounded-3xl flex flex-col overflow-hidden animate-fade">
       {/* Header */}
-      <div className="p-4 border-b border-[var(--border-glass)]">
-        <button
-          onClick={onBack}
-          className="flex items-center gap-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] mb-4"
-        >
-          <FiArrowLeft />
-          <span>Back to Playlists</span>
+      <div className="px-8 pt-6 pb-5">
+        <button onClick={onBack} className="flex items-center gap-1.5 text-[var(--text-secondary)] hover:text-[var(--text-primary)] mb-5 transition-colors text-xs font-medium">
+          <FiArrowLeft size={14} />
+          Back
         </button>
         
         <div className="flex items-end gap-6">
-          <div className="w-48 h-48 rounded-lg bg-[var(--bg-glass)] flex items-center justify-center">
+          <div className="w-40 h-40 rounded-3xl bg-gradient-to-br from-[rgba(0,0,0,0.04)] to-[rgba(0,0,0,0.08)] flex items-center justify-center flex-shrink-0 shadow-lg overflow-hidden">
             {playlist.coverArt ? (
-              <img src={playlist.coverArt} alt="" className="w-full h-full object-cover rounded-lg" />
+              <img src={playlist.coverArt} alt="" className="w-full h-full object-cover" />
             ) : (
-              <span className="text-6xl opacity-30">♫</span>
+              <FiMusic size={36} className="text-[var(--text-tertiary)]" />
             )}
           </div>
-          
-          <div className="flex-1">
-            <p className="text-sm uppercase font-medium">Playlist</p>
-            <h1 className="text-5xl font-bold mt-2">{playlist.name}</h1>
-            {playlist.description && (
-              <p className="text-[var(--text-secondary)] mt-2">{playlist.description}</p>
-            )}
-            <p className="text-sm text-[var(--text-secondary)] mt-4">
-              {playlistSongs.length} songs
-            </p>
+          <div className="flex-1 min-w-0 pb-1">
+            <p className="text-[10px] font-semibold text-[var(--text-secondary)] tracking-wider uppercase mb-1">Playlist</p>
+            <h1 className="text-4xl font-extrabold text-[var(--text-primary)] tracking-tight truncate">{playlist.name}</h1>
+            {playlist.description && <p className="text-sm text-[var(--text-secondary)] mt-2 line-clamp-2">{playlist.description}</p>}
+            <p className="text-xs text-[var(--text-secondary)] mt-2">{playlistSongs.length} songs</p>
+            <div className="flex gap-3 mt-4">
+              <button onClick={handlePlayAll} disabled={playlistSongs.length === 0} className="glass-interactive px-5 py-2 rounded-full text-xs font-semibold text-[var(--text-primary)] disabled:opacity-40">
+                <FiPlay size={12} className="inline mr-1.5" fill="currentColor" />
+                Play all
+              </button>
+            </div>
           </div>
         </div>
-        
-        <button
-          onClick={handlePlayAll}
-          disabled={playlistSongs.length === 0}
-          className="mt-6 px-8 py-3 rounded-full bg-[var(--accent-color)] text-white font-medium hover:scale-105 transition-transform disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-        >
-          <FiPlay className="inline mr-2" />
-          Play All
-        </button>
       </div>
       
-      {/* Song List */}
-      <div className="flex-1 overflow-y-auto p-4">
+      <div className="flex-1 scroll-container px-6 pb-4">
         {playlistSongs.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-full text-[var(--text-secondary)]">
-            <p>This playlist is empty</p>
-            <p className="text-sm">Add songs from the library</p>
+          <div className="flex flex-col items-center justify-center py-16">
+            <p className="text-sm text-[var(--text-secondary)]">This playlist is empty</p>
           </div>
         ) : (
-          <div className="space-y-1">
-            {playlistSongs.map((song, index) => (
-              <div key={song.id} className="flex items-center gap-4">
-                <span className="w-8 text-center text-[var(--text-secondary)]">{index + 1}</span>
+          <div className="space-y-0.5">
+            {playlistSongs.map((song, i) => (
+              <div key={song.id} className="flex items-center group">
                 <div className="flex-1">
-                  <SongRow song={song} />
+                  <SongRow 
+                    song={song} 
+                    index={i + 1} 
+                    onPlay={() => useAudio.getState().play(song)}
+                  />
                 </div>
-                <button
-                  onClick={() => removeSongFromPlaylist(playlistId, song.id)}
-                  className="p-2 text-[var(--text-secondary)] hover:text-red-500"
-                >
-                  ×
-                </button>
+                <button onClick={() => removeSongFromPlaylist(playlistId, song.id)} className="pr-4 text-[var(--text-tertiary)] hover:text-red-400 opacity-0 group-hover:opacity-100 transition-all">×</button>
               </div>
             ))}
           </div>

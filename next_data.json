@@ -1,0 +1,1730 @@
+{
+  "props": {
+    "pageProps": {
+      "state": {
+        "data": {
+          "entity": {
+            "type": "playlist",
+            "name": "get some sleep",
+            "uri": "spotify:playlist:3T2g0ppL6DJYNvzC8B8xE3",
+            "id": "3T2g0ppL6DJYNvzC8B8xE3",
+            "title": "get some sleep",
+            "subtitle": "mr.nonchalant",
+            "authors": null,
+            "coverArt": {
+              "sources": [
+                {
+                  "height": null,
+                  "width": null,
+                  "url": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da8413e459940de21ec1da20011b"
+                }
+              ]
+            },
+            "releaseDate": null,
+            "duration": 0,
+            "isPlayable": true,
+            "playabilityReason": "UNKNOWN",
+            "isExplicit": false,
+            "hasVideo": false,
+            "relatedEntityUri": "spotify:playlist:3T2g0ppL6DJYNvzC8B8xE3",
+            "trackList": [
+              {
+                "uri": "spotify:track:70YTBH8vOGJNMhy6186yFm",
+                "uid": "bc2befa7cbb79e31",
+                "title": "Heavenly",
+                "subtitle": "Cigarettes After Sex",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 286773,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/1ee03940a5808735cc3680532f9666778c59cf36"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:3p4hRhMcb6ch8OLtATMaLw",
+                "uid": "200e0692c40b0931",
+                "title": "Cry",
+                "subtitle": "Cigarettes After Sex",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 256799,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/106f26034d8b2c247cf251e0643996e8b175b783"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:7qekEQyGFRim7qNhxzkaLo",
+                "uid": "23468b8d41c0fbbc",
+                "title": "Somewhere Only We Know (feat. Darren Criss) - Cover of Keane",
+                "subtitle": "Glee Cast, Darren Criss",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 184653,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/a130e0768c15ca87aae268b9fd415574cffc8a98"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:42qNWdLKCI41S4uzfamhFM",
+                "uid": "74500b9d179d7eb0",
+                "title": "Duvet",
+                "subtitle": "bôa",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 203600,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/6ba327351d5201323195c91d26a25a71ef9a0b63"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:020UWYILXPAFwMztt1oarn",
+                "uid": "d2917c08490af7a6",
+                "title": "lemon",
+                "subtitle": "yurisa",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 255021,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/7ff35ed571b892adb2bba68bf399265a0a3e8d7d"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:0yc6Gst2xkRu0eMLeRMGCX",
+                "uid": "25ec7cfe7ea835d9",
+                "title": "Apocalypse",
+                "subtitle": "Cigarettes After Sex",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 290616,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/3e45fd6c5ac536908e9e18f69008f4340019e0fb"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:1FWsomP9StpCcXNWmJk8Cl",
+                "uid": "fa32266f905a1922",
+                "title": "K.",
+                "subtitle": "Cigarettes After Sex",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 320030,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/a9ae6f8b9b5f1bbe364ca7239639b2a14c8db876"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:2UKvxuMTM7JwprZrnpxgY1",
+                "uid": "00a244056014f278",
+                "title": "Kiss It Off Me",
+                "subtitle": "Cigarettes After Sex",
+                "isExplicit": true,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": [
+                    "EXPLICIT"
+                  ]
+                },
+                "duration": 269933,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/af6482d33532a71fd9034351f51e0a56e83a1f4f"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:6tMwheKgpMHBcHtr8aYMn8",
+                "uid": "a48a8647210a13ba",
+                "title": "watch you sleep.",
+                "subtitle": "girl in red",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 180225,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/e1d04708300761b453fd07f920f2cae023ecedde"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:78Sw5GDo6AlGwTwanjXbGh",
+                "uid": "c6f841b4c7f0eed5",
+                "title": "Here With Me",
+                "subtitle": "d4vd",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 242484,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/02da8d15e186a00b60179098a4b300d1f804a675"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:0O0bttAxJKKWqAqY2Nq4mC",
+                "uid": "9158baea2d2ed404",
+                "title": "Falling In Love",
+                "subtitle": "Cigarettes After Sex",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 245840,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/7a441ba8bf31e34c5a58854ac7ffa800bdf6f485"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:6ilc4vQcwMPlvAHFfsTGng",
+                "uid": "3ec225ae8b9a7d07",
+                "title": "Sweet",
+                "subtitle": "Cigarettes After Sex",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 292110,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/22cc79cd8def37177baf82508f8294c813702c31"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:0JIMT9gzLIIz0esKLyjbKf",
+                "uid": "3eb88b2a41b632d2",
+                "title": "Telephones",
+                "subtitle": "Vacations",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 212432,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/293d58e654c577df1a5de31477ed0e3d120ae82c"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:0SpkyS1Q4MD8GaVcP5YjT4",
+                "uid": "ce1fcf5cbcd1c1fc",
+                "title": "Sunsetz",
+                "subtitle": "Cigarettes After Sex",
+                "isExplicit": true,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": [
+                    "EXPLICIT"
+                  ]
+                },
+                "duration": 215150,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/ad81ca44db791e5d19ca6c0ae6971c5fe80b7d9c"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:37xXDxPzfk5lnU8aNSRXfw",
+                "uid": "ac68c6893b5caa10",
+                "title": "You're the Only Good Thing In My Life",
+                "subtitle": "Cigarettes After Sex",
+                "isExplicit": true,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": [
+                    "EXPLICIT"
+                  ]
+                },
+                "duration": 275186,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/a064bcd009c0a26937ff11de9dbf94097951e6e8"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:2R4AlwtrrkMaRKojcTIzmL",
+                "uid": "5c21ed763c39f249",
+                "title": "For the First Time",
+                "subtitle": "Mac DeMarco",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 182306,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/e314b9561be3999991e63154b19cdcda0ff32fa3"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:1hUXDEqjNIIbfjTcaz3jzb",
+                "uid": "7989e69843b70582",
+                "title": "Like the Movies",
+                "subtitle": "Laufey",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 162758,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/e7479097c28505ba6274c8d7488481c920b512bc"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:44AyOl4qVkzS48vBsbNXaC",
+                "uid": "1c4acffa03ab0403",
+                "title": "Can't Help Falling in Love",
+                "subtitle": "Elvis Presley",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 185877,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/ddb3e782f04a42c4380d839e23a7e675a5b1f9ec"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:6YTmsdqH5LZzCGIY0lqloD",
+                "uid": "9f87e7eb5aa672ba",
+                "title": "happy",
+                "subtitle": "Skinnyfabs",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 173217,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/424081849c73179ddce367e95fa8b514c426fc43"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:7B3z0ySL9Rr0XvZEAjWZzM",
+                "uid": "bde46e2d4a63d18c",
+                "title": "Sofia",
+                "subtitle": "Clairo",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 188386,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/bc4990b8e0e567426683b6018a92a2483a11405e"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:10nyNJ6zNy2YVYLrcwLccB",
+                "uid": "d5734691182a1521",
+                "title": "No Surprises",
+                "subtitle": "Radiohead",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 229120,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/969161ef645e3e89a4ee8a0274013dae480a9e2d"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:2fuYa3Lx06QQJAm0MjztKr",
+                "uid": "5cb6ae0e8aa3e957",
+                "title": "Let Down",
+                "subtitle": "Radiohead",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 299560,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/d47a5b024207667a80dc36b5852bf851d2f35773"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:3hRV0jL3vUpRrcy398teAU",
+                "uid": "deb78e2844c9b934",
+                "title": "The Night We Met",
+                "subtitle": "Lord Huron",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 208211,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/52aeda9a6b79dcc376ea590391478a4f4c034244"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:4hm33jVolpa22nzhlY72jD",
+                "uid": "b4d6c5641e59a1f5",
+                "title": "Intermission",
+                "subtitle": "Strawberry Guy",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 110181,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/98cc49d40368842527b28588feb4f247218ad190"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:53k1gKFpKrDbktUzrB80f0",
+                "uid": "f016b7bca853d0b3",
+                "title": "Sesame Syrup",
+                "subtitle": "Cigarettes After Sex",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 303296,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/270b245c308fc9e9d5c2d94a22dd38eec34c1a7e"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:7nbAMKGkPMjc4EuNNsjXqZ",
+                "uid": "2609754ad90b6a93",
+                "title": "Neon Moon",
+                "subtitle": "Cigarettes After Sex",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 225767,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/4d083427696c73005b9da1322448ebd75194cfb3"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:6VSi1IOqxNPolspHzLFFPK",
+                "uid": "df75127d5f20b1d0",
+                "title": "Fleeting Dream (Was It True) - Sped Up",
+                "subtitle": "PARIS The Prince",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 176326,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/cc1b499ea3bfec808a9fb63600f1288df9f9cd62"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:6lanRgr6wXibZr8KgzXxBl",
+                "uid": "729d893a190105bb",
+                "title": "a thousand years",
+                "subtitle": "Christina Perri",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 285120,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/be3f3ae6466123836bb05ce0a23a368c196e62f7"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:1fDFHXcykq4iw8Gg7s5hG9",
+                "uid": "737086b194203e72",
+                "title": "About You",
+                "subtitle": "The 1975",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 326490,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/39c5cb6625074a7cac706f73cf958d571802bd43"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:4IRHwIZHzlHT1FQpRa5RdE",
+                "uid": "54faf0a56b34efce",
+                "title": "Goodbye Yellow Brick Road - Remastered 2014",
+                "subtitle": "Elton John",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 192826,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/2bbb66b8e6b0ffc9d5b0d6be802fabf4053c8a33"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:2TeYAizye4GlmzQq5zyf91",
+                "uid": "2a82bd5242d892d9",
+                "title": "The Physical Attractions",
+                "subtitle": "The Symposium",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 284769,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/9cf4f227c428fdc19a344d35d695835cce658f43"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:00RLNHc2jkEjUoCUlFgPVT",
+                "uid": "4598c0bb4fd8b249",
+                "title": "welcome and goodbye",
+                "subtitle": "Dream, Ivory",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 140643,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/9131b7fd53b0f5a02cde1c38f6d0dacea247200f"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:2nD9CUfMMUVxL0UyFs8fGG",
+                "uid": "ee3614eed1d8aab6",
+                "title": "Pistol",
+                "subtitle": "Cigarettes After Sex",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 234174,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/422d43014d45076a782d92e9f638ea201bb61c57"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:4b3khTm3ufGRTyZwuYdasn",
+                "uid": "be678dd41ffbb754",
+                "title": "Don't Let Me Go",
+                "subtitle": "Cigarettes After Sex",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 262560,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/071fe3579d0b77956589cc12a20ce5db41a82548"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:0oxYB9GoOIDrdzniNdKC44",
+                "uid": "003b52403f13e8aa",
+                "title": "When the Sun Hits",
+                "subtitle": "Slowdive",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 285906,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/073a709bc647e5ebadd37a8e7412dfebcccf13e3"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:7BB1bFKQ7sgBZ62dAsprfN",
+                "uid": "adf069ad9ffb6c4f",
+                "title": "red love",
+                "subtitle": "Dream, Ivory",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 187820,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/433ef2d4e5f38151386a212520893497be48eb4c"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:4RAOI1etsgbh5NP3T5R8rN",
+                "uid": "80076c2de9f63ede",
+                "title": "I Don't Love You",
+                "subtitle": "My Chemical Romance",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 238680,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/705900514a0f4036e189aa907171423ef5b4a6f2"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:1l4pW7Tklvcc3k38rDFMkk",
+                "uid": "bd579955deea6f3e",
+                "title": "Touch",
+                "subtitle": "Cigarettes After Sex",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 292853,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/6bdfe4ca75d7bdaea82c2f82bea4659eb7b93a0b"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:6Uwi2Qk3H7fM4b4W4ExrAp",
+                "uid": "36b768a1c2026fa9",
+                "title": "Scott Street",
+                "subtitle": "Phoebe Bridgers",
+                "isExplicit": true,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": [
+                    "EXPLICIT"
+                  ]
+                },
+                "duration": 305000,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/bbd8aaaf93fea56b88aa4fedcfc167a661aedef8"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:33HRECrmuelZxOpid6XTNX",
+                "uid": "2f924529b35faaf1",
+                "title": "Alison",
+                "subtitle": "Slowdive",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 230986,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/4ae39b2954d3485b077e88071f27ae3cd672be32"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:2plbrEY59IikOBgBGLjaoe",
+                "uid": "25beea41a7018832",
+                "title": "Die With A Smile",
+                "subtitle": "Lady Gaga, Bruno Mars",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 251667,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/07cebc34d49ff7a0f1ce21e4902ebbf3238f6788"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:5NvOZCjZaGGGL597exlQWv",
+                "uid": "26215ed9af8c6e4d",
+                "title": "Line Without a Hook",
+                "subtitle": "Ricky Montgomery",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 249586,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/7ca3ab941ddeebad9d8ad832c6cbc4b23f46965b"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:73CKjW3vsUXRpy3NnX4H7F",
+                "uid": "2e2234c0ff72ee02",
+                "title": "Fake Plastic Trees",
+                "subtitle": "Radiohead",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 290706,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/3ee9bf807973f08aeb2e2b7578e0e4b8e58e513e"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:3nqqDo8CcCLke3ZoTgiOKf",
+                "uid": "ec740affb784ab6d",
+                "title": "The Man Who Can't Be Moved",
+                "subtitle": "The Script",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 241373,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/b5126c67a4973b633b4a95c3359206fa9122bc92"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:1tZcw7GtIqviL32bzaKdSo",
+                "uid": "d9d1daa90e2da5ff",
+                "title": "(Nice Dream)",
+                "subtitle": "Radiohead",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 233226,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/d0f3b3fe4fd826a794ec8718dbb5ad7dd9846b2d"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:6QeYSvYqYUsfBzsApbjDHO",
+                "uid": "da98f0844b64fd71",
+                "title": "Cigarettes out the Window",
+                "subtitle": "TV Girl",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 198960,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/7141e8575ba61267370ea78a9d3d9f82354d6c1a"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:14xj58ZexBaEaHARb11Cqs",
+                "uid": "4b5f5082a6334e99",
+                "title": "Lucky",
+                "subtitle": "Radiohead",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 258813,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/c311feaf1645f0dabfa9e5303b92ba17391f239d"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:1mM2u5TRMdUKsIfZKEI6yJ",
+                "uid": "aab7a49c8059d833",
+                "title": "Last Flowers",
+                "subtitle": "Radiohead",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 266478,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/9c97aa492bb9b30d11a59bb2dd1e822ac78c5fc8"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:0KyAGiNGUytG5JLxJu4F6l",
+                "uid": "5f258fd122bc1414",
+                "title": "Pretty Girl",
+                "subtitle": "Clairo",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 178352,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/cfa1778d342a62f65f6b04ea2956401e534548d5"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:1ShRHPAiiIrh0arZbSFmx1",
+                "uid": "9dad17b107dc2f58",
+                "title": "Heavy",
+                "subtitle": "The Marías",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 253213,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/506abc0b8872f25532144491c71f6ae17116feeb"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:3siwsiaEoU4Kuuc9WKMUy5",
+                "uid": "c86aacd6fc3c43d3",
+                "title": "No One Noticed",
+                "subtitle": "The Marías",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 236906,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/d4318ea548c910877ebe8f80c9d5ec192cee7f97"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:27g0ztD0kKcDJRrIFDl8q8",
+                "uid": "2fffe447ded7157e",
+                "title": "Pretty Girl",
+                "subtitle": "Clairo",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 178352,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/cfa1778d342a62f65f6b04ea2956401e534548d5"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:7xLfmCx9jcZNgzlIK7NupN",
+                "uid": "334dddf11463d236",
+                "title": "Stress Relief",
+                "subtitle": "late night drive home",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 205714,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/cfba2dab350e47eccdad74d28455ea0c4ff029e5"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:1a19jsjG2DvbN1fVJonKUU",
+                "uid": "c77a25a1bd5e1eed",
+                "title": "Beaches",
+                "subtitle": "beabadoobee",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 230053,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/5f7afad6bf7c078fb5671b468e101ddaa9977a51"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:0tAX3EBK7aZpvmv0tb7qbE",
+                "uid": "ef21fdb98f078319",
+                "title": "Headlock",
+                "subtitle": "Imogen Heap",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 215338,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/33f6038e34c60b314e56bd5f115da7d277122bea"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:35o9a4iAfLl5jRmqMX9c1D",
+                "uid": "61740b9b58485cda",
+                "title": "Shape of My Heart",
+                "subtitle": "Backstreet Boys",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 230093,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/51ef6b2dc6f49c442e4e30f5506f7634aa6f041b"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:2MRJ3Oqb5yAONPvQyoWnQ9",
+                "uid": "5dd6a867308348a7",
+                "title": "Can't Help Falling In Love - with The Royal Philharmonic Orchestra",
+                "subtitle": "Elvis Presley, Royal Philharmonic Orchestra",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 198775,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/ba53d511ea8e7151af22cd488437dc47a1b1545c"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:4kfjA6WfgKBt7I7YKuDCkU",
+                "uid": "f9ea7238e3691389",
+                "title": "Blue Jeans",
+                "subtitle": "GANGGA",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 211483,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/b8cf3175241b475c630668ac69a1778e35f29c7f"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:285hMzLhJwHVLe9QT9qilk",
+                "uid": "f638bd07b6a2780c",
+                "title": "Breakeven",
+                "subtitle": "The Script",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 261426,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/b71065334974c4f663a14410c64932fdf6125682"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:3St0RlsL0Z0klK1mqWakQm",
+                "uid": "f93b19e311b743d6",
+                "title": "If I Let You Go - Radio Edit",
+                "subtitle": "Westlife",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 221266,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/a06635f1541717c67f7ec75d14cb53b68425b1b9"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:3xQgvGwf3KnaYry1bPsQIb",
+                "uid": "3a240f1fc5c38b07",
+                "title": "Silver Sable",
+                "subtitle": "Cigarettes After Sex",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 231933,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/a55b4dbcb900e5e30884e6ec64692fd2d847b17f"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:5AESgkEOkftzxGqIgqR0bt",
+                "uid": "04850d83d99e7a30",
+                "title": "Dark Vacay",
+                "subtitle": "Cigarettes After Sex",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 213413,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/a487b7ae7a43e78c1cd555a00dbb94f5805339c5"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:4xbN7giFhdGbSQTPyG178F",
+                "uid": "17c4803b8dd216a3",
+                "title": "John Wayne",
+                "subtitle": "Cigarettes After Sex",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 258013,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/ed176d5e236d1032fa368782ef90802eba5a5e8b"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:43iIQbw5hx986dUEZbr3eN",
+                "uid": "16f070eb4314133b",
+                "title": "From The Start",
+                "subtitle": "Laufey",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 169573,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/3cdcd256d89b8634adc47aebbcf6db256e3b9978"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:4PwWESSlTwzvw9B7bmtTLS",
+                "uid": "912e7a4707614b07",
+                "title": "anything",
+                "subtitle": "Adrianne Lenker",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 202047,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/23c2cf1cc28e3d1033e92465f7d41fb9148e875a"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:4iVj0UxqLlgrFWNdOnCwFS",
+                "uid": "5ada12d33a870840",
+                "title": "Mrs Magic (Strings Version)",
+                "subtitle": "Strawberry Guy",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 221929,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/15db03e876dfb6369cf775cfb8a654fe9cfc7b4f"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:6PBanBy8L1K2Ry4UN186XH",
+                "uid": "63f4b84ca84a4600",
+                "title": "forwards beckon rebound",
+                "subtitle": "Adrianne Lenker",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 189464,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/9fcceed5ef74b98123284f276008202b51838767"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:6DH13QYXK7lKkYHSU88N48",
+                "uid": "690cbd4a810be068",
+                "title": "Who Knows",
+                "subtitle": "Daniel Caesar",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 226283,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/695ea23e689a1816b09a8ac6f0874af0f5c38420"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:2aaCNg42RA74s0EmHTBqS7",
+                "uid": "90eb3da322b08da4",
+                "title": "No Other Heart",
+                "subtitle": "Mac DeMarco",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 173117,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/132051ad632e9185af08309121c52dbfd93b1d34"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:0DTSnA1bcVI5niJzoyBPyZ",
+                "uid": "20d1f1fe8141aa45",
+                "title": "Past Won't Leave My Bed",
+                "subtitle": "Joji",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 166106,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/76c79b7b7a204a406c80d4feb06d9d326855c920"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:3aBGKDiAAvH2H7HLOyQ4US",
+                "uid": "10397d33fee371bb",
+                "title": "Glimpse of Us",
+                "subtitle": "Joji",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 233453,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/60563dacfdf0658ae1c0c2052786f97779a39c56"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:75JFxkI2RXiU7L9VXzMkle",
+                "uid": "5d3a85c29ec251f2",
+                "title": "The Scientist",
+                "subtitle": "Coldplay",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 309600,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/cb283ce76eeee06a724b942d36a140cc088dd50f"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:7H7NyZ3G075GqPx2evsfeb",
+                "uid": "33fb3041e8650126",
+                "title": "Chamber Of Reflection",
+                "subtitle": "Mac DeMarco",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 231723,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/17a0b215c5cab8a53047fd6aa5c5dd54507efaec"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:40GRJBeHKroMtWwGX9EFyQ",
+                "uid": "6aceaaa58e830db9",
+                "title": "Untitled",
+                "subtitle": "Rex Orange County",
+                "isExplicit": true,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": [
+                    "EXPLICIT"
+                  ]
+                },
+                "duration": 135706,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/d7a8ad637048f87974bea21858900eba05b3b5f0"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:7JEzAlwHhCD2M1cYE6BeqJ",
+                "uid": "c988088cd462566c",
+                "title": "Loving Machine",
+                "subtitle": "TV Girl",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 227000,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/5cc4c5a155ba4d15510a1c40c3b08235a31fab79"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:42SKTvz8CvqTEzmADF4nI5",
+                "uid": "a95a0b24d81130df",
+                "title": "Tejano Blue",
+                "subtitle": "Cigarettes After Sex",
+                "isExplicit": true,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": [
+                    "EXPLICIT"
+                  ]
+                },
+                "duration": 234453,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/04be96bb57be5a3d74de299e040ba88c6cc4798f"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:1lORkxEMmsCZqhoxcmk3A3",
+                "uid": "9ecab48dd61e855c",
+                "title": "Nothing",
+                "subtitle": "Bruno Major",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 162797,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/c58d62f7c6495a34f59c6ee670f47bb7e816733b"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:07koEqsKHZTlGVMC9eoEjO",
+                "uid": "b24e186f1e1bb78d",
+                "title": "The Most Beautiful Thing",
+                "subtitle": "Bruno Major",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 235426,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/53c5c134afcb439cdbf081e4123ab38676549b3d"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:0sz1wmBpB9gKh9zFV9YMFe",
+                "uid": "2c19ec94bb699f29",
+                "title": "Crush",
+                "subtitle": "Cigarettes After Sex",
+                "isExplicit": true,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": [
+                    "EXPLICIT"
+                  ]
+                },
+                "duration": 266666,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/b78d348ba24d6ff6bd9a3e510f11b1ceb2ce356e"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:0v8J17a6cO0wWp7z731GTd",
+                "uid": "72f94aceef211ff2",
+                "title": "One More Love Song",
+                "subtitle": "Mac DeMarco",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 241066,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/b6bb210d586d645e2c0a23c76c776aefa1c3eb3f"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:5ZP8LfM7TezqoxF9yp6VzX",
+                "uid": "3ca12c8bb6930200",
+                "title": "Stop Waiting",
+                "subtitle": "Cigarettes After Sex",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 362973,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/8add7947d360967d738de9efaabd1790f1133414"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:3GUSidbQwd7xuvU6AQorRh",
+                "uid": "93705c643329b5a7",
+                "title": "Keep on Loving You",
+                "subtitle": "Cigarettes After Sex",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 233000,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/ee328c7ab69e19ee02964b4c2549223249836dbf"
+                },
+                "entityType": "track"
+              },
+              {
+                "uri": "spotify:track:2Ddfm2NQwTRsf7YVlt258S",
+                "uid": "d5baf4945384225b",
+                "title": "Opera House",
+                "subtitle": "Cigarettes After Sex",
+                "isExplicit": false,
+                "isNineteenPlus": false,
+                "contentRatings": {
+                  "labels": []
+                },
+                "duration": 364680,
+                "isPlayable": true,
+                "playabilityReason": "PLAYABLE",
+                "audioPreview": {
+                  "format": "MP3_96",
+                  "url": "https://p.scdn.co/mp3-preview/62e56631c16069356bc09d192ff921e3e2838b0b"
+                },
+                "entityType": "track"
+              }
+            ],
+            "visualIdentity": {
+              "backgroundBase": {
+                "alpha": 255,
+                "blue": 50,
+                "green": 57,
+                "red": 136
+              },
+              "backgroundTintedBase": {
+                "alpha": 255,
+                "blue": 16,
+                "green": 18,
+                "red": 94
+              },
+              "textBase": {
+                "alpha": 255,
+                "blue": 255,
+                "green": 255,
+                "red": 255
+              },
+              "textBrightAccent": {
+                "alpha": 255,
+                "blue": 255,
+                "green": 255,
+                "red": 255
+              },
+              "textSubdued": {
+                "alpha": 255,
+                "blue": 179,
+                "green": 190,
+                "red": 255
+              },
+              "image": [
+                {
+                  "url": "https://image-cdn-fa.spotifycdn.com/image/ab67706c00006c1113e459940de21ec1da20011b",
+                  "maxHeight": 64,
+                  "maxWidth": 64
+                },
+                {
+                  "url": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000bebb13e459940de21ec1da20011b",
+                  "maxHeight": 640,
+                  "maxWidth": 640
+                },
+                {
+                  "url": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da8413e459940de21ec1da20011b",
+                  "maxHeight": 300,
+                  "maxWidth": 300
+                }
+              ]
+            },
+            "attributes": [],
+            "format": ""
+          },
+          "embeded_entity_uri": "spotify:playlist:3T2g0ppL6DJYNvzC8B8xE3",
+          "defaultAudioFileObject": {
+            "passthrough": "NONE"
+          }
+        },
+        "settings": {
+          "rtl": false,
+          "session": {
+            "accessToken": "BQA34zEl_4CfFQDe6IH4-SGeNNJbQUvfnYrT1_blSkQ1AU5L7H1uBlyaM2mESh0HOkrzyJzsjgzOMAbXHjxTLYqcpQeYw9oozvpVDJBLqokbFMujQFmnTNdwW1DwfitXaNLqAUsOxiNO",
+            "accessTokenExpirationTimestampMs": 1781345825491,
+            "isAnonymous": true
+          },
+          "entityContext": "playlist",
+          "clientId": "ab9ad0d96a624805a7d51e8868df1f97",
+          "isMobile": false,
+          "isSafari": false,
+          "isIOS": false,
+          "isTablet": false,
+          "isDarkMode": false,
+          "isAudiobookLaunchedInGeoMarket": false
+        },
+        "machineState": {
+          "initialized": false,
+          "showOverflowMenu": false,
+          "playbackMode": "unknown",
+          "currentPreviewTrackIndex": 0,
+          "platformSupportsEncryptedContent": false
+        }
+      },
+      "config": {
+        "correlationId": "7b6d995a25089949888e827fbacc2ef7",
+        "strings": {
+          "en": {
+            "translation": {}
+          }
+        },
+        "locale": "en",
+        "clientId": "ab9ad0d96a624805a7d51e8868df1f97",
+        "restrictionId": ""
+      },
+      "_sentryTraceData": "8d49f22c9eab5c83bd94395cbdbbaf3d-f5e35fbae4325530-0",
+      "_sentryBaggage": "sentry-environment=production,sentry-release=c84433002701f01ffd58a1942b837809dbaa78dd,sentry-public_key=4cc707ab12ea4779b417479c0550a5cb,sentry-trace_id=8d49f22c9eab5c83bd94395cbdbbaf3d,sentry-org_id=22381,sentry-sampled=false,sentry-sample_rand=0.2992697119250831,sentry-sample_rate=0"
+    },
+    "__N_SSP": true
+  },
+  "page": "/playlist/[id]",
+  "query": {
+    "id": "3T2g0ppL6DJYNvzC8B8xE3"
+  },
+  "buildId": "04137497-8dac-45b7-bffa-e090ab0b3b7c",
+  "assetPrefix": "https://embed-cdn.spotifycdn.com",
+  "isFallback": false,
+  "isExperimentalCompile": false,
+  "gssp": true,
+  "scriptLoader": []
+}

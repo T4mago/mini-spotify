@@ -1,44 +1,32 @@
 import { useAudio } from '../../hooks/useAudio';
-import { FiPlay, FiPause, FiSkipBack, FiSkipForward, FiShuffle, FiRepeat } from 'react-icons/fi';
+import { FiPlay, FiPause, FiSkipBack, FiSkipForward } from 'react-icons/fi';
 
 export function PlaybackControls() {
-  const { isPlaying, togglePlay, next, previous, shuffle, repeat, toggleShuffle, toggleRepeat } = useAudio();
+  const { isPlaying, togglePlay, next, previous } = useAudio();
   
   return (
-    <div className="flex items-center gap-4">
-      <button
-        onClick={toggleShuffle}
-        className={`p-2 rounded-full transition-colors ${shuffle ? 'text-[var(--accent-color)]' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'}`}
-      >
-        <FiShuffle size={18} />
-      </button>
-      
+    <div className="flex items-center gap-3">
       <button
         onClick={previous}
-        className="p-2 rounded-full text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+        className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
       >
-        <FiSkipBack size={20} />
+        <FiSkipBack size={14} fill="currentColor" />
       </button>
       
       <button
         onClick={togglePlay}
-        className="p-3 rounded-full bg-[var(--text-primary)] text-[var(--bg-primary)] hover:scale-105 transition-transform"
+        className="w-8 h-8 rounded-full bg-[var(--accent)] text-black flex items-center justify-center hover:scale-105 transition-all shadow-[0_3px_10px_rgba(29,185,84,0.3)] hover:shadow-[0_4px_16px_rgba(29,185,84,0.5)] active:scale-95"
       >
-        {isPlaying ? <FiPause size={24} /> : <FiPlay size={24} className="ml-1" />}
+        {isPlaying 
+          ? <FiPause size={14} fill="currentColor" /> 
+          : <FiPlay size={14} fill="currentColor" className="ml-0.5" />}
       </button>
       
       <button
         onClick={next}
-        className="p-2 rounded-full text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+        className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
       >
-        <FiSkipForward size={20} />
-      </button>
-      
-      <button
-        onClick={toggleRepeat}
-        className={`p-2 rounded-full transition-colors ${repeat !== 'off' ? 'text-[var(--accent-color)]' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'}`}
-      >
-        <FiRepeat size={18} />
+        <FiSkipForward size={14} fill="currentColor" />
       </button>
     </div>
   );

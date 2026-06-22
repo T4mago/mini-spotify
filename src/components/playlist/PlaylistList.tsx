@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 import { usePlaylist } from '../../hooks/usePlaylist';
+import { useSpotify } from '../../hooks/useSpotify';
+import { useLibrary } from '../../hooks/useLibrary';
 import { CreatePlaylistModal } from './CreatePlaylistModal';
-import { FiPlus, FiMusic } from 'react-icons/fi';
+import { ImportModal } from '../spotify/ImportModal';
+import { MatchDialog } from '../spotify/MatchDialog';
+import { SpotifyTrack } from '../../types';
+import { FiPlus, FiMusic, FiDownload } from 'react-icons/fi';
 
 interface PlaylistListProps {
   selectedPlaylistId: string | null;
@@ -10,50 +15,106 @@ interface PlaylistListProps {
 
 export function PlaylistList({ selectedPlaylistId, onSelectPlaylist }: PlaylistListProps) {
   const { playlists, loadPlaylists, createPlaylist } = usePlaylist();
+  const { matchedTracks, isConnected, checkConnection, playlistName } = useSpotify();
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [isImportModalOpen, setIsImportModalOpen] = useState(false);
+  const [isMatchDialogOpen, setIsMatchDialogOpen] = useState(false);
+  const [importedTracks, setImportedTracks] = useState<SpotifyTrack[]>([]);
+  const [importedPlaylistName, setImportedPlaylistName] = useState('');
   
-  useEffect(() => {
-    loadPlaylists();
-  }, [loadPlaylists]);
+  useEffect(() => { loadPlaylists(); checkConnection(); }, [loadPlaylists, checkConnection]);
   
   const handleCreate = async (name: string, description?: string) => {
     const playlist = await createPlaylist(name, description);
     onSelectPlaylist(playlist.id);
   };
+
+  const handleImportComplete = () => {
+    const spotifyState = useSpotify.getState();
+    setIsImportModalOpen(false);
+    setImportedTracks(spotifyState.matchedTracks.map(m => m.spotifyTrack));
+    setImportedPlaylistName(spotifyState.playlistName);
+    setIsMatchDialogOpen(true);
+  };
+
+  const handleMatchComplete = () => {
+    setIsMatchDialogOpen(false);
+    loadPlaylists();
+    useLibrary.getState().loadSongs();
+  };
   
   return (
-    <div className="h-full flex flex-col">
-      <div className="flex items-center justify-between p-4 border-b border-[var(--border-glass)]">
-        <h2 className="text-xl font-bold">Playlists</h2>
-        <button
-          onClick={() => setIsCreateModalOpen(true)}
-          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--accent-color)] hover:opacity-90 transition-opacity"
-        >
-          <FiPlus />
-          <span>New</span>
-        </button>
+    <div className="glass-strong flex-1 rounded-3xl flex flex-col overflow-hidden animate-fade">
+      <div className="flex items-center justify-between px-8 pt-8 pb-4">
+        <div>
+          <h2 className="text-3xl font-extrabold text-[var(--text-primary)] tracking-tight">Playlists</h2>
+          <p className="text-xs text-[var(--text-secondary)] mt-1">
+            {playlists.length > 0 ? `${playlists.length} playlist${playlists.length !== 1 ? 's' : ''}` : 'Create your first playlist'}
+          </p>
+        </div>
+        <div className="flex gap-2">
+          {isConnected && (
+            <button
+              onClick={() => setIsImportModalOpen(true)}
+              className="glass-interactive flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold text-[var(--text-primary)]"
+            >
+              <FiDownload size={14} />
+              Import
+            </button>
+          )}
+          <button
+            onClick={() => setIsCreateModalOpen(true)}
+            className="glass-interactive flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold text-[var(--text-primary)]"
+          >
+            <FiPlus size={14} />
+            New
+          </button>
+        </div>
       </div>
       
-      <div className="flex-1 overflow-y-auto p-4">
+      <div className="flex-1 scroll-container px-6 pb-4">
         {playlists.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-full text-[var(--text-secondary)]">
-            <FiMusic size={48} className="mb-4 opacity-50" />
-            <p className="text-lg">No playlists yet</p>
-            <p className="text-sm">Click "New" to create one</p>
+          <div className="flex flex-col items-center justify-center py-16">
+            <div className="w-16 h-16 rounded-2xl glass-solid flex items-center justify-center mb-4">
+              <FiMusic size={24} className="text-[var(--text-tertiary)]" />
+            </div>
+            <p className="text-sm font-semibold text-[var(--text-primary)] mb-1">No playlists yet</p>
+            <p className="text-xs text-[var(--text-secondary)] mb-4">Create a playlist to organize your music</p>
+            <div className="flex gap-2">
+              {isConnected && (
+                <button
+                  onClick={() => setIsImportModalOpen(true)}
+                  className="glass-interactive px-5 py-2 rounded-full text-xs font-semibold text-[var(--text-primary)]"
+                >
+                  <FiDownload size={13} className="inline mr-1.5" />
+                  Import from Spotify
+                </button>
+              )}
+              <button
+                onClick={() => setIsCreateModalOpen(true)}
+                className="glass-interactive px-5 py-2 rounded-full text-xs font-semibold text-[var(--text-primary)]"
+              >
+                <FiPlus size={13} className="inline mr-1.5" />
+                Create Playlist
+              </button>
+            </div>
           </div>
         ) : (
-          <div className="space-y-2">
-            {playlists.map(playlist => (
+          <div className="grid grid-cols-2 gap-3">
+            {playlists.map((playlist, i) => (
               <button
                 key={playlist.id}
                 onClick={() => onSelectPlaylist(playlist.id)}
-                className={`w-full text-left p-4 rounded-lg transition-all
-                  ${selectedPlaylistId === playlist.id
-                    ? 'bg-[var(--accent-color)] text-white'
-                    : 'bg-[var(--bg-glass)] hover:bg-[var(--bg-glass-hover)]'}`}
+                className={`glass-interactive p-5 text-left rounded-3xl animate-fade stagger-${Math.min(i + 1, 6)}
+                  ${selectedPlaylistId === playlist.id ? 'ring-2 ring-[var(--accent)]' : ''}`}
               >
-                <p className="font-medium">{playlist.name}</p>
-                <p className="text-sm opacity-70">{playlist.songIds.length} songs</p>
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[rgba(0,0,0,0.04)] to-[rgba(0,0,0,0.08)] flex items-center justify-center mb-3">
+                  <FiMusic size={18} className="text-[var(--text-tertiary)]" />
+                </div>
+                <p className="font-semibold text-sm text-[var(--text-primary)] truncate">{playlist.name}</p>
+                <p className="text-[11px] text-[var(--text-secondary)] mt-0.5">
+                  {playlist.songIds.length} song{playlist.songIds.length !== 1 ? 's' : ''}
+                </p>
               </button>
             ))}
           </div>
@@ -64,6 +125,20 @@ export function PlaylistList({ selectedPlaylistId, onSelectPlaylist }: PlaylistL
         isOpen={isCreateModalOpen}
         onClose={() => setIsCreateModalOpen(false)}
         onCreate={handleCreate}
+      />
+
+      <ImportModal
+        isOpen={isImportModalOpen}
+        onClose={() => setIsImportModalOpen(false)}
+        onComplete={handleImportComplete}
+      />
+
+      <MatchDialog
+        isOpen={isMatchDialogOpen}
+        onClose={() => setIsMatchDialogOpen(false)}
+        onComplete={handleMatchComplete}
+        playlistName={importedPlaylistName}
+        tracks={importedTracks}
       />
     </div>
   );

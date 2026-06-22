@@ -1,7 +1,7 @@
 import { ipcMain } from 'electron';
 import { v4 as uuidv4 } from 'uuid';
-import { store } from '../store';
-import { Playlist } from '../types';
+import { store } from '../store/index.js';
+import { Playlist } from '../types.js';
 
 export function registerPlaylistIPC() {
   ipcMain.handle('playlist:getAll', () => {

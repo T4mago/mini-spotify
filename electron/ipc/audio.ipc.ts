@@ -1,5 +1,5 @@
 import { ipcMain } from 'electron';
-import { store } from '../store';
+import { store } from '../store/index.js';
 
 export function registerAudioIPC() {
   ipcMain.handle('audio:getSettings', () => {
@@ -8,9 +8,11 @@ export function registerAudioIPC() {
   
   ipcMain.handle('audio:savePosition', (_, songId: string, position: number) => {
     store.saveSettings({ lastPlayedSong: songId, lastPlayedPosition: position });
+    return true;
   });
   
   ipcMain.handle('audio:saveVolume', (_, volume: number) => {
     store.saveSettings({ volume });
+    return true;
   });
 }

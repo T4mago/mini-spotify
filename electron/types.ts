@@ -8,18 +8,20 @@ export interface Song {
   coverArt?: string;
   year?: number;
   genre?: string;
-  addedAt: string;
-  dateAdded?: string;
+  spotifyId?: string;
+  streamingUri?: string;
+  dateAdded: string;
 }
 
 export interface Playlist {
   id: string;
   name: string;
   description?: string;
-  songIds: string[];
   coverArt?: string;
+  songIds: string[];
   createdAt: string;
   updatedAt: string;
+  spotifyUrl?: string;
 }
 
 export interface Lyrics {
@@ -54,9 +56,10 @@ export interface ImportMatch {
 }
 
 export interface Settings {
-  theme: 'dark' | 'light';
+  theme: 'dark' | 'light' | 'system';
   accentColor: string;
   volume: number;
+  lastPlayedPlaylist?: string;
   lastPlayedSong?: string;
   lastPlayedPosition?: number;
   spotifyClientId?: string;

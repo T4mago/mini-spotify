@@ -17,9 +17,14 @@ const ALLOWED_INVOKE_CHANNELS = [
   'spotify:isConnected',
   'spotify:login',
   'spotify:setCredentials',
+  'spotify:handleCallback',
   'spotify:import',
   'spotify:matchTracks',
   'spotify:createPlaylist',
+  'spotify:accessToken',
+  'spotify:playTracks',
+  'spotify:disconnect',
+  'youtube:search',
   'audio:getSettings',
   'audio:savePosition',
   'audio:saveVolume',
@@ -29,6 +34,11 @@ const ALLOWED_SEND_CHANNELS = [
   'window:minimize',
   'window:maximize',
   'window:close',
+];
+
+const ALLOWED_ON_CHANNELS = [
+  'spotify:callback',
+  'spotify:loginStatus',
 ];
 
 contextBridge.exposeInMainWorld('electronAPI', {
@@ -51,6 +61,9 @@ contextBridge.exposeInMainWorld('electronAPI', {
   },
 
   on: (channel: string, callback: (...args: unknown[]) => void) => {
+    if (!ALLOWED_ON_CHANNELS.includes(channel)) {
+      throw new Error(`IPC on channel not allowed: ${channel}`);
+    }
     ipcRenderer.on(channel, (_event, ...args) => callback(...args));
     return () => ipcRenderer.removeAllListeners(channel);
   },

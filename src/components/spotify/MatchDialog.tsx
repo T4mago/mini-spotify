@@ -1,114 +1,83 @@
+import { useState } from 'react';
 import { useSpotify } from '../../hooks/useSpotify';
-import { useLibrary } from '../../hooks/useLibrary';
-import { ImportMatch } from '../../types';
-import { FiCheck, FiMusic } from 'react-icons/fi';
+import { SpotifyTrack } from '../../types';
+import { FiMusic, FiX } from 'react-icons/fi';
 
 interface MatchDialogProps {
   isOpen: boolean;
   onClose: () => void;
   onComplete: () => void;
   playlistName: string;
+  tracks: SpotifyTrack[];
 }
 
-export function MatchDialog({ isOpen, onClose, onComplete, playlistName }: MatchDialogProps) {
-  const { matchedTracks, createPlaylist } = useSpotify();
-  const { songs } = useLibrary();
-  const selectedMatches = new Map(matchedTracks.map((m: ImportMatch, i: number) => [i, m.matchedSongId || null]));
+export function MatchDialog({ isOpen, onClose, onComplete, playlistName, tracks }: MatchDialogProps) {
+  const { createPlaylist } = useSpotify();
+  const [excluded, setExcluded] = useState<Set<number>>(new Set());
+  const [creating, setCreating] = useState(false);
 
   if (!isOpen) return null;
 
-  const getConfidenceColor = (confidence: number) => {
-    if (confidence >= 80) return 'text-green-500';
-    if (confidence >= 60) return 'text-yellow-500';
-    return 'text-red-500';
+  const toggle = (i: number) => {
+    setExcluded(prev => { const n = new Set(prev); n.has(i) ? n.delete(i) : n.add(i); return n; });
   };
 
-  const getConfidenceLabel = (confidence: number) => {
-    if (confidence >= 80) return 'High';
-    if (confidence >= 60) return 'Medium';
-    return 'Low';
+  const selectedTracks = tracks.filter((_, i) => !excluded.has(i));
+  const formatDuration = (ms: number) => {
+    const m = Math.floor(ms / 60000);
+    const s = Math.floor((ms % 60000) / 1000);
+    return `${m}:${s.toString().padStart(2, '0')}`;
   };
 
-  const handleCreatePlaylist = async () => {
-    const songIds = Array.from(selectedMatches.values()).filter(Boolean) as string[];
-    await createPlaylist(playlistName, undefined, songIds);
-    onComplete();
+  const handleCreate = async () => {
+    setCreating(true);
+    try {
+      await createPlaylist(playlistName, undefined, selectedTracks);
+      onComplete();
+    } catch (err) {
+      console.error('Failed to create playlist:', err);
+    }
+    setCreating(false);
   };
-
-  const matchedCount = Array.from(selectedMatches.values()).filter(Boolean).length;
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <div className="glass-panel w-[800px] max-h-[80vh] flex flex-col">
-        <div className="p-6 border-b border-[var(--border-glass)]">
-          <h3 className="text-xl font-bold">Match Tracks</h3>
-          <p className="text-sm text-[var(--text-secondary)]">
-            Match Spotify tracks with your local files
-          </p>
-        </div>
-
-        <div className="flex-1 overflow-y-auto p-6">
-          <div className="space-y-4">
-            {matchedTracks.map((match: ImportMatch, index: number) => (
-              <div key={index} className="flex items-center gap-4 p-4 rounded-lg bg-[var(--bg-glass)]">
-                <div className="w-12 h-12 rounded bg-[var(--bg-glass-hover)] flex items-center justify-center">
-                  {match.spotifyTrack.album.images[0] ? (
-                    <img
-                      src={match.spotifyTrack.album.images[0].url}
-                      alt=""
-                      className="w-full h-full object-cover rounded"
-                    />
-                  ) : (
-                    <FiMusic className="text-[var(--text-secondary)]" />
-                  )}
-                </div>
-
-                <div className="flex-1 min-w-0">
-                  <p className="font-medium truncate">{match.spotifyTrack.name}</p>
-                  <p className="text-sm text-[var(--text-secondary)] truncate">
-                    {match.spotifyTrack.artists[0]?.name} • {match.spotifyTrack.album.name}
-                  </p>
-                </div>
-
-                <div className={`text-sm font-medium ${getConfidenceColor(match.confidence)}`}>
-                  {getConfidenceLabel(match.confidence)}
-                </div>
-
-                <div className="w-48">
-                  {match.matchedSongId ? (
-                    <div className="flex items-center gap-2 text-green-500">
-                      <FiCheck />
-                      <span className="text-sm truncate">
-                        {songs.find(s => s.id === match.matchedSongId)?.title || 'Matched'}
-                      </span>
-                    </div>
-                  ) : (
-                    <span className="text-sm text-[var(--text-secondary)]">No match</span>
-                  )}
-                </div>
-              </div>
-            ))}
+    <div className="fixed inset-0 bg-black/20 backdrop-blur-sm flex items-center justify-center z-50 animate-fade">
+      <div className="glass-strong w-[660px] max-h-[80vh] rounded-3xl flex flex-col overflow-hidden animate-slide-up">
+        <div className="flex items-center justify-between px-6 py-5 border-b border-[rgba(0,0,0,0.04)]">
+          <div>
+            <h3 className="font-bold text-sm text-[var(--text-primary)]">Import Tracks</h3>
+            <p className="text-[10px] text-[var(--text-tertiary)] mt-0.5">Click to exclude tracks from import</p>
           </div>
+          <button onClick={onClose} className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-[rgba(0,0,0,0.05)] text-[var(--text-secondary)] transition-all"><FiX size={16} /></button>
         </div>
-
-        <div className="p-6 border-t border-[var(--border-glass)] flex justify-between items-center">
-          <p className="text-sm text-[var(--text-secondary)]">
-            {matchedCount} of {matchedTracks.length} tracks matched
-          </p>
-
+        <div className="flex-1 overflow-y-auto p-5 space-y-1.5">
+          {tracks.map((track: SpotifyTrack, i: number) => {
+            const isExcl = excluded.has(i);
+            return (
+              <div key={i} onClick={() => toggle(i)}
+                className={`flex items-center gap-3 p-3 rounded-2xl cursor-pointer transition-all
+                  ${isExcl ? 'opacity-40 bg-[rgba(0,0,0,0.02)]' : 'bg-[rgba(0,0,0,0.02)] hover:bg-[rgba(0,0,0,0.04)]'}`}>
+                <div className="w-10 h-10 rounded-xl overflow-hidden bg-[rgba(0,0,0,0.04)] flex-shrink-0 flex items-center justify-center">
+                  {track.album.images[0] ? (
+                    <img src={track.album.images[0].url} alt="" className="w-full h-full object-cover" />
+                  ) : <FiMusic size={14} className="text-[var(--text-tertiary)]" />}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-semibold text-[var(--text-primary)] truncate">{track.name}</p>
+                  <p className="text-[10px] text-[var(--text-secondary)] truncate">{track.artists.map(a => a.name).join(', ')}</p>
+                </div>
+                <span className="text-[10px] text-[var(--text-tertiary)] tabular-nums">{formatDuration(track.duration_ms)}</span>
+              </div>
+            );
+          })}
+        </div>
+        <div className="px-6 py-4 border-t border-[rgba(0,0,0,0.04)] flex justify-between items-center">
+          <p className="text-[11px] text-[var(--text-secondary)]"><span className="font-bold text-[var(--text-primary)]">{selectedTracks.length}</span> of {tracks.length} tracks</p>
           <div className="flex gap-3">
-            <button
-              onClick={onClose}
-              className="px-4 py-2 rounded-lg hover:bg-[var(--bg-glass-hover)] transition-colors"
-            >
-              Cancel
-            </button>
-            <button
-              onClick={handleCreatePlaylist}
-              disabled={matchedCount === 0}
-              className="px-4 py-2 rounded-lg bg-[var(--accent-color)] text-white disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90 transition-opacity"
-            >
-              Create Playlist ({matchedCount} songs)
+            <button onClick={onClose} className="glass-interactive px-5 py-2.5 rounded-full text-xs font-semibold text-[var(--text-secondary)]">Cancel</button>
+            <button onClick={handleCreate} disabled={selectedTracks.length === 0 || creating}
+              className="bg-[var(--text-primary)] text-white px-5 py-2.5 rounded-full text-xs font-semibold disabled:opacity-40 hover:scale-105 transition-transform shadow-md flex items-center gap-1.5">
+              {creating ? <><div className="animate-spin w-3 h-3 border-2 border-white border-t-transparent rounded-full" /> Creating...</> : `Import (${selectedTracks.length})`}
             </button>
           </div>
         </div>
