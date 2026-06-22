@@ -78,7 +78,11 @@ export function SearchBar() {
                 <SongRow 
                   song={song} 
                   index={i + 1} 
-                  onPlay={() => useAudio.getState().play(song)}
+                  onPlay={() => {
+                    const state = useAudio.getState();
+                    state.setQueue(filteredSongs);
+                    state.play(song);
+                  }}
                 />
               </div>
             ))}

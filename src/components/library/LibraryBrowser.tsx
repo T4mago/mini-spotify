@@ -137,7 +137,11 @@ export function LibraryBrowser() {
                 <SongRow 
                   song={song} 
                   index={index + 1} 
-                  onPlay={() => useAudio.getState().play(song)}
+                  onPlay={() => {
+                    const state = useAudio.getState();
+                    state.setQueue(songs);
+                    state.play(song);
+                  }}
                 />
               </div>
             ))}

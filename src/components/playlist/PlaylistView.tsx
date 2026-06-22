@@ -71,7 +71,11 @@ export function PlaylistView({ playlistId, onBack }: PlaylistViewProps) {
                   <SongRow 
                     song={song} 
                     index={i + 1} 
-                    onPlay={() => useAudio.getState().play(song)}
+                    onPlay={() => {
+                      const state = useAudio.getState();
+                      state.setQueue(playlistSongs);
+                      state.play(song);
+                    }}
                   />
                 </div>
                 <button onClick={() => removeSongFromPlaylist(playlistId, song.id)} className="pr-4 text-[var(--text-tertiary)] hover:text-red-400 opacity-0 group-hover:opacity-100 transition-all">×</button>

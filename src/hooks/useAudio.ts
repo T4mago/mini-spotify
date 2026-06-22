@@ -10,6 +10,7 @@ interface AudioState {
   shuffle: boolean;
   repeat: 'off' | 'all' | 'one';
   queue: Song[];
+  upNext: Song[];
   history: Song[];
   seekRequest: number | null;
   
@@ -24,10 +25,9 @@ interface AudioState {
   toggleShuffle: () => void;
   toggleRepeat: () => void;
   setQueue: (songs: Song[]) => void;
-  addToQueue: (song: Song) => void;
   playNext: (song: Song) => void;
-  removeFromQueue: (index: number) => void;
-  clearQueue: () => void;
+  removeFromUpNext: (index: number) => void;
+  clearUpNext: () => void;
   setCurrentTime: (time: number) => void;
   setDuration: (duration: number) => void;
 }
@@ -41,6 +41,7 @@ export const useAudio = create<AudioState>((set, get) => ({
   shuffle: false,
   repeat: 'off',
   queue: [],
+  upNext: [],
   history: [],
   seekRequest: null,
   
@@ -57,9 +58,10 @@ export const useAudio = create<AudioState>((set, get) => ({
   resume: () => set({ isPlaying: true }),
   
   togglePlay: () => {
-    const { isPlaying, currentSong, queue } = get();
-    if (!currentSong && queue.length > 0) {
-      get().play(queue[0]);
+    const { isPlaying, currentSong, queue, upNext } = get();
+    if (!currentSong && (upNext.length > 0 || queue.length > 0)) {
+      if (upNext.length > 0) get().play(upNext[0]);
+      else get().play(queue[0]);
     } else {
       set({ isPlaying: !isPlaying });
     }
@@ -70,13 +72,23 @@ export const useAudio = create<AudioState>((set, get) => ({
   setVolume: (volume) => set({ volume: Math.max(0, Math.min(100, volume)) }),
   
   next: () => {
-    const { queue, currentSong, shuffle, repeat } = get();
-    if (!currentSong || queue.length === 0) return;
+    const { queue, upNext, currentSong, shuffle, repeat } = get();
     
-    if (repeat === 'one') {
+    if (repeat === 'one' && currentSong) {
       get().play(currentSong);
       return;
     }
+    
+    // Priority: upNext first, then queue
+    if (upNext.length > 0) {
+      const [nextSong, ...rest] = upNext;
+      set({ upNext: rest });
+      get().play(nextSong);
+      return;
+    }
+    
+    // Fall back to default queue
+    if (!currentSong || queue.length === 0) return;
     
     const currentIndex = queue.findIndex(s => s.id === currentSong.id);
     let nextIndex = currentIndex + 1;
@@ -130,29 +142,22 @@ export const useAudio = create<AudioState>((set, get) => ({
   
   setQueue: (songs) => set({ queue: songs }),
   
-  addToQueue: (song) => set((state) => ({ queue: [...state.queue, song] })),
-  
   playNext: (song) => {
-    const { currentSong, queue } = get();
+    const { currentSong } = get();
     if (!currentSong) {
-      set({ queue: [song] });
       get().play(song);
       return;
     }
-    const idx = queue.findIndex(s => s.id === currentSong.id);
-    const insertAt = idx >= 0 ? idx + 1 : queue.length;
-    const newQueue = [...queue];
-    newQueue.splice(insertAt, 0, song);
-    set({ queue: newQueue });
+    set((state) => ({ upNext: [...state.upNext, song] }));
   },
   
-  removeFromQueue: (index) => set((state) => {
-    const newQueue = [...state.queue];
-    newQueue.splice(index, 1);
-    return { queue: newQueue };
+  removeFromUpNext: (index) => set((state) => {
+    const newUpNext = [...state.upNext];
+    newUpNext.splice(index, 1);
+    return { upNext: newUpNext };
   }),
   
-  clearQueue: () => set({ queue: [] }),
+  clearUpNext: () => set({ upNext: [] }),
   
   setCurrentTime: (time) => set({ currentTime: time }),
   
