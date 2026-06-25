@@ -158,7 +158,7 @@ export async function disconnect(): Promise<void> {
 }
 
 export function getRedirectUri(): string {
-  return window.location.origin + window.location.pathname;
+  return window.location.origin + '/';
 }
 
 export function parsePlaylistId(url: string): string | null {
