@@ -10,11 +10,12 @@ export function Header({ activeView: _activeView }: HeaderProps) {
 
   return (
     <div className="glass-pill h-12 px-2 flex items-center justify-between animate-fade">
-      {/* macOS Traffic Light Controls */}
+      {/* macOS Traffic Light Controls - hidden in PWA */}
+      {window.electronAPI && (
       <div className="flex items-center gap-2 pl-3 group/traffic">
         {/* Close */}
         <button 
-          onClick={() => window.electronAPI.close()}
+          onClick={() => window.electronAPI?.close()}
           className="w-[13px] h-[13px] rounded-full bg-[#ff5f57] flex items-center justify-center transition-all duration-200 hover:brightness-110 hover:shadow-[0_0_6px_rgba(255,95,87,0.5)] active:brightness-90"
           title="Close"
         >
@@ -24,7 +25,7 @@ export function Header({ activeView: _activeView }: HeaderProps) {
         </button>
         {/* Minimize */}
         <button 
-          onClick={() => window.electronAPI.minimize()}
+          onClick={() => window.electronAPI?.minimize()}
           className="w-[13px] h-[13px] rounded-full bg-[#febc2e] flex items-center justify-center transition-all duration-200 hover:brightness-110 hover:shadow-[0_0_6px_rgba(254,188,46,0.5)] active:brightness-90"
           title="Minimize"
         >
@@ -34,7 +35,7 @@ export function Header({ activeView: _activeView }: HeaderProps) {
         </button>
         {/* Maximize */}
         <button 
-          onClick={() => window.electronAPI.maximize()}
+          onClick={() => window.electronAPI?.maximize()}
           className="w-[13px] h-[13px] rounded-full bg-[#28c840] flex items-center justify-center transition-all duration-200 hover:brightness-110 hover:shadow-[0_0_6px_rgba(40,200,64,0.5)] active:brightness-90"
           title="Fullscreen"
         >
@@ -53,6 +54,7 @@ export function Header({ activeView: _activeView }: HeaderProps) {
           <FiChevronRight size={16} />
         </button>
       </div>
+      )}
       
       {/* Center title */}
       <div className="flex items-center gap-2">

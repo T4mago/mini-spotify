@@ -38,6 +38,8 @@ export interface Settings {
   lastPlayedPlaylist?: string;
   lastPlayedSong?: string;
   lastPlayedPosition?: number;
+  spotifyClientId?: string;
+  spotifyClientSecret?: string;
 }
 
 export interface SpotifyTrack {

@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "tsc -p tsconfig.node.json && tsc -p tsconfig.preload.json && concurrently \"vite\" \"wait-on http://localhost:5180 && cross-env NODE_ENV=development electron .\"",
     "build": "vite build && electron-builder",
+    "build:pwa": "vite build",
     "build:win": "vite build && electron-builder --win",
     "build:portable": "vite build && electron-builder --win --dir",
     "preview": "vite preview",
@@ -43,6 +44,7 @@
     "tailwindcss": "^3.4.0",
     "typescript": "^5.3.0",
     "vite": "^5.1.0",
+    "vite-plugin-pwa": "^1.3.0",
     "wait-on": "^7.2.0"
   }
 }
