@@ -170,11 +170,13 @@ export function parsePlaylistId(url: string): string | null {
 
 async function apiFetch(path: string, options: RequestInit = {}): Promise<any> {
   const token = await ensureToken();
+  console.log('[PWA Spotify] apiFetch', path, 'token:', token ? 'present' : 'null');
   if (!token) throw new Error('Not authenticated');
   const res = await fetch(`https://api.spotify.com/v1${path}`, {
     ...options,
     headers: { Authorization: `Bearer ${token}`, ...options.headers },
   });
+  console.log('[PWA Spotify] apiFetch', path, 'status:', res.status);
   if (res.status === 204) return null;
   if (!res.ok) throw new Error(`Spotify API ${res.status}`);
   return res.json();

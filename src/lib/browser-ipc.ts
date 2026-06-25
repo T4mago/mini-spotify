@@ -183,9 +183,12 @@ const handlers: Record<string, ChannelHandler> = {
   'spotify:import': async (url: string) => {
     const { getPlaylist, getPlaylistTracks, parsePlaylistId } = await import('./browser-spotify');
     const playlistId = parsePlaylistId(url);
+    console.log('[PWA] spotify:import playlistId:', playlistId);
     if (!playlistId) throw new Error('Invalid Spotify playlist URL');
     const playlist = await getPlaylist(playlistId);
+    console.log('[PWA] spotify:import playlist:', playlist?.name);
     const tracks = await getPlaylistTracks(playlistId);
+    console.log('[PWA] spotify:import tracks:', tracks?.length);
     return { playlist, tracks };
   },
   'spotify:matchTracks': async ({ tracks }: { tracks: any[] }) => {
