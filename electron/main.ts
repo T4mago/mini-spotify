@@ -33,8 +33,7 @@ function createWindow() {
   });
 
   if (process.env.NODE_ENV === 'development') {
-    mainWindow.loadURL('http://localhost:5173');
-    mainWindow.webContents.openDevTools();
+    mainWindow.loadURL('http://localhost:5180');
   } else {
     mainWindow.loadFile(path.join(__dirname, '../dist/index.html'));
   }

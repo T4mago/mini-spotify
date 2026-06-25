@@ -10,8 +10,20 @@ export default defineConfig({
     },
   },
   base: './',
+  server: {
+    port: 5180,
+    strictPort: true,
+  },
   build: {
     outDir: 'dist',
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          icons: ['react-icons'],
+        },
+      },
+    },
   },
 });
