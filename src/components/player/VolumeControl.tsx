@@ -10,13 +10,13 @@ export function VolumeControl() {
     <div className="flex items-center gap-1.5">
       <button
         onClick={() => setVolume(volume === 0 ? 80 : 0)}
-        className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+        className="text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
       >
-        <VolumeIcon size={14} />
+        <VolumeIcon size={13} />
       </button>
       
       <div 
-        className="w-20 h-1 bg-[rgba(0,0,0,0.08)] dark:bg-[rgba(255,255,255,0.12)] rounded-full cursor-pointer relative group transition-all hover:h-1.5"
+        className="w-20 h-[3px] bg-[var(--text-tertiary)]/15 rounded-full cursor-pointer relative group transition-all hover:h-1"
         onClick={(e) => {
           const rect = e.currentTarget.getBoundingClientRect();
           const pct = (e.clientX - rect.left) / rect.width;
@@ -24,10 +24,10 @@ export function VolumeControl() {
         }}
       >
         <div 
-          className="h-full bg-[var(--accent)] rounded-full relative"
+          className="h-full bg-[var(--text-primary)] rounded-full relative transition-all"
           style={{ width: `${volume}%` }}
         >
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-white border border-[var(--accent)] rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-md" />
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-lg ring-1 ring-black/10" />
         </div>
       </div>
     </div>

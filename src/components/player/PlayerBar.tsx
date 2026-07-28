@@ -152,7 +152,7 @@ export function PlayerBar({ isLyricsOpen, onToggleLyrics, isQueueOpen, onToggleQ
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   return (
-    <div className="glass-pill px-4 py-2.5 flex items-center gap-4 w-[680px] animate-slide-up">
+    <div className="glass-pill px-5 py-2.5 flex items-center gap-4 w-[700px] animate-slide-up">
       <audio
         ref={audioRef}
         onTimeUpdate={handleTimeUpdate}
@@ -163,17 +163,17 @@ export function PlayerBar({ isLyricsOpen, onToggleLyrics, isQueueOpen, onToggleQ
       {/* Now Playing Info */}
       <div className="flex items-center gap-3 w-48 min-w-0">
         {currentSong?.coverArt ? (
-          <img src={currentSong.coverArt} alt="" className="w-10 h-10 rounded-xl object-cover shadow-md" />
+          <img src={currentSong.coverArt} alt="" className="w-10 h-10 rounded-lg object-cover shadow-lg ring-1 ring-black/10" />
         ) : (
-          <div className="w-10 h-10 rounded-xl glass-solid flex items-center justify-center">
-            <FiMusic size={16} className="text-[var(--text-tertiary)]" />
+          <div className="w-10 h-10 rounded-lg glass-solid flex items-center justify-center">
+            <FiMusic size={15} className="text-[var(--text-tertiary)]" />
           </div>
         )}
         <div className="min-w-0">
-          <p className="text-xs font-semibold text-[var(--text-primary)] truncate">
+          <p className="text-[11px] font-semibold text-[var(--text-primary)] truncate leading-tight">
             {currentSong?.title || 'No track'}
           </p>
-          <p className="text-[10px] text-[var(--text-secondary)] truncate">
+          <p className="text-[10px] text-[var(--text-tertiary)] truncate leading-tight mt-0.5">
             {currentSong?.artist || 'Select a song'}
           </p>
         </div>
@@ -183,46 +183,46 @@ export function PlayerBar({ isLyricsOpen, onToggleLyrics, isQueueOpen, onToggleQ
       <div className="flex-1 flex flex-col items-center gap-1">
         <PlaybackControls />
         <div className="flex items-center gap-2 w-full max-w-xs">
-          <span className="text-[9px] text-[var(--text-tertiary)] w-7 text-right tabular-nums">{formatTime(currentTime)}</span>
+          <span className="text-[9px] text-[var(--text-tertiary)] w-7 text-right tabular-nums font-medium">{formatTime(currentTime)}</span>
           <div 
-            className="flex-1 h-1 bg-[rgba(0,0,0,0.08)] dark:bg-[rgba(255,255,255,0.12)] rounded-full cursor-pointer relative group transition-all hover:h-1.5"
+            className="flex-1 h-[3px] bg-[var(--text-tertiary)]/15 rounded-full cursor-pointer relative group transition-all hover:h-1"
             onClick={(e) => {
               const rect = e.currentTarget.getBoundingClientRect();
               const pct = (e.clientX - rect.left) / rect.width;
               seek(pct * duration);
             }}
           >
-            <div className="h-full bg-[var(--accent)] rounded-full relative" style={{ width: `${progress}%` }}>
-              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-white border border-[var(--accent)] rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-md" />
+            <div className="h-full bg-[var(--accent)] rounded-full relative transition-all" style={{ width: `${progress}%` }}>
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-lg ring-1 ring-black/10" />
             </div>
           </div>
-          <span className="text-[9px] text-[var(--text-tertiary)] w-7 tabular-nums">{formatTime(duration)}</span>
+          <span className="text-[9px] text-[var(--text-tertiary)] w-7 tabular-nums font-medium">{formatTime(duration)}</span>
         </div>
       </div>
 
       {/* Volume & Lyrics & Queue */}
-      <div className="w-44 flex items-center justify-end gap-2">
+      <div className="w-44 flex items-center justify-end gap-1.5">
         <button
           onClick={onToggleQueue}
           className={`w-7 h-7 rounded-lg flex items-center justify-center transition-all duration-300 ${
             isQueueOpen
-              ? 'text-[var(--accent)] bg-[var(--accent-soft)] border border-[var(--accent)]/20 shadow-[0_0_10px_rgba(29,185,84,0.1)]'
-              : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--glass-bg-hover)]'
+              ? 'text-[var(--accent)] bg-[var(--accent)]/10'
+              : 'text-[var(--text-tertiary)] hover:text-[var(--text-primary)] hover:bg-[var(--glass-bg-hover)]'
           }`}
           title="Queue"
         >
-          <FiList size={14} />
+          <FiList size={13} />
         </button>
         <button
           onClick={onToggleLyrics}
           className={`w-7 h-7 rounded-lg flex items-center justify-center transition-all duration-300 ${
             isLyricsOpen 
-              ? 'text-[var(--accent)] bg-[var(--accent-soft)] border border-[var(--accent)]/20 shadow-[0_0_10px_rgba(29,185,84,0.1)]' 
-              : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--glass-bg-hover)]'
+              ? 'text-[var(--accent)] bg-[var(--accent)]/10' 
+              : 'text-[var(--text-tertiary)] hover:text-[var(--text-primary)] hover:bg-[var(--glass-bg-hover)]'
           }`}
           title="Lyrics"
         >
-          <FiMic size={14} />
+          <FiMic size={13} />
         </button>
         <VolumeControl />
       </div>
