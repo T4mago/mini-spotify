@@ -39,3 +39,4 @@ coverage/
 # Production
 *.tgz
 *.tar.gz
+.vercel

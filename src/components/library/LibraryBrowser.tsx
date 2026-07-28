@@ -1,7 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useLibrary } from '../../hooks/useLibrary';
 import { useAudio } from '../../hooks/useAudio';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { useLenisScroll } from '../../hooks/useLenisScroll';
 import { SongRow } from './SongRow';
 import { FiFolder, FiMusic } from 'react-icons/fi';
 
@@ -21,7 +22,13 @@ function ShimmerRow() {
 
 export function LibraryBrowser() {
   const { songs, isLoading, loadSongs, scanFolder } = useLibrary();
-  const { containerRef, refresh } = useScrollReveal();
+  const { containerRef: scrollRef, refresh } = useScrollReveal();
+  const { ref: lenisRef } = useLenisScroll();
+
+  const containerRef = useCallback((node: HTMLDivElement | null) => {
+    scrollRef.current = node;
+    lenisRef.current = node;
+  }, []);
   
   useEffect(() => {
     loadSongs();

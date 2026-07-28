@@ -1,6 +1,6 @@
 import { ipcMain, BrowserWindow, shell } from 'electron';
 import yts from 'yt-search';
-import { SpotifyService } from '../spotify/spotifyAuth.js';
+import { SpotifyService, fetchSpotifyPlaylistViaEmbed, parsePlaylistId } from '../spotify/spotifyAuth.js';
 import { store } from '../store/index.js';
 import { Song, SpotifyTrack, ImportMatch } from '../types.js';
 import { v4 as uuidv4 } from 'uuid';
@@ -77,28 +77,39 @@ export function registerSpotifyIPC() {
 
   ipcMain.handle('spotify:import', async (_, url: string) => {
     console.log(`[SpotifyIPC] spotify:import: URL: ${url}`);
-    const service = getSpotifyService();
-    if (!service) {
-      console.error('[SpotifyIPC] spotify:import: Spotify not configured');
-      throw new Error('Spotify not configured');
-    }
 
-    const playlistId = service.parsePlaylistId(url);
+    const playlistId = parsePlaylistId(url);
     console.log(`[SpotifyIPC] spotify:import: Parsed playlistId: ${playlistId}`);
     if (!playlistId) throw new Error('Invalid Spotify playlist URL');
 
+    // Strategy 1: Scrape embed page (no auth needed)
     try {
-      console.log('[SpotifyIPC] spotify:import: Fetching playlist...');
+      console.log('[SpotifyIPC] spotify:import: Trying embed scrape...');
+      const result = await fetchSpotifyPlaylistViaEmbed(playlistId);
+      console.log(`[SpotifyIPC] spotify:import: Embed scrape succeeded: ${result.playlist.name} (${result.tracks.length} tracks)`);
+      return result;
+    } catch (err) {
+      console.warn('[SpotifyIPC] spotify:import: Embed scrape failed:', err);
+    }
+
+    // Strategy 2: Spotify API (requires credentials)
+    const service = getSpotifyService();
+    if (!service) {
+      throw new Error('Could not fetch playlist. Try registering a free Spotify Developer app and setting your credentials in Settings.');
+    }
+
+    try {
+      console.log('[SpotifyIPC] spotify:import: Fetching playlist via API...');
       const playlist = await service.getPlaylist(playlistId);
       console.log(`[SpotifyIPC] spotify:import: Playlist fetched: ${playlist.name}`);
-      
-      console.log('[SpotifyIPC] spotify:import: Fetching tracks...');
+
+      console.log('[SpotifyIPC] spotify:import: Fetching tracks via API...');
       const tracks = await service.getPlaylistTracks(playlistId);
       console.log(`[SpotifyIPC] spotify:import: Tracks fetched: ${tracks.length}`);
 
       return { playlist, tracks };
     } catch (error) {
-      console.error('[SpotifyIPC] spotify:import: Error:', error);
+      console.error('[SpotifyIPC] spotify:import: API Error:', error);
       throw error;
     }
   });

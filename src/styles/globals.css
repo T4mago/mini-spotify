@@ -272,9 +272,7 @@ body {
 .scroll-smooth {
   overflow-y: auto;
   overscroll-behavior-y: contain;
-  scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  will-change: scroll-position;
   scroll-padding-top: 8px;
   scroll-padding-bottom: 8px;
 }
@@ -284,7 +282,6 @@ body {
   overflow-y: auto;
   overscroll-behavior-y: contain;
   -webkit-overflow-scrolling: touch;
-  will-change: scroll-position;
 }
 
 /* ===== SCROLL REVEAL — items fade in on scroll ===== */

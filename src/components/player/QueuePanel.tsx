@@ -1,4 +1,5 @@
 import { useAudio } from '../../hooks/useAudio';
+import { useLenisScroll } from '../../hooks/useLenisScroll';
 import { FiX, FiList, FiMusic, FiTrash2, FiPlay, FiArrowUp } from 'react-icons/fi';
 
 interface QueuePanelProps {
@@ -8,6 +9,7 @@ interface QueuePanelProps {
 
 export function QueuePanel({ isOpen, onClose }: QueuePanelProps) {
   const { currentSong, queue, upNext, removeFromUpNext, clearUpNext, play } = useAudio();
+  const { ref: lenisRef } = useLenisScroll();
 
   const currentIndex = currentSong ? queue.findIndex(s => s.id === currentSong.id) : -1;
   const defaultQueue = currentIndex >= 0 ? queue.slice(currentIndex + 1) : queue;
@@ -37,7 +39,7 @@ export function QueuePanel({ isOpen, onClose }: QueuePanelProps) {
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-3 scroll-smooth" style={{ scrollbarWidth: 'none' }}>
+      <div ref={lenisRef} className="flex-1 scroll-smooth p-3" style={{ scrollbarWidth: 'none' }}>
         {!currentSong && queue.length === 0 && upNext.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-12 text-center">
             <FiList size={20} className="text-[var(--text-tertiary)] mb-2" />

@@ -1,3 +1,5 @@
+import { SpotifyTrack } from '../types.js';
+
 interface SpotifyAuth {
   accessToken: string;
   refreshToken: string;
@@ -523,4 +525,90 @@ export class SpotifyService {
   }
 }
 
+export function parsePlaylistId(url: string): string | null {
+  const match = url.match(/playlist\/([a-zA-Z0-9]+)/);
+  return match ? match[1] : null;
+}
+
+export async function fetchSpotifyPlaylistViaEmbed(playlistId: string):
+  Promise<{ playlist: { id: string; name: string; description: string; images: { url: string }[] }; tracks: SpotifyTrack[] }> {
+  console.log(`[EmbedScraper] Fetching embed page for ${playlistId}`);
+
+  const response = await fetch(`https://open.spotify.com/embed/playlist/${playlistId}`, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+      'Accept': 'text/html',
+    },
+  });
+
+  if (!response.ok) throw new Error(`Embed page failed: ${response.status}`);
+  const html = await response.text();
+
+  const nextDataMatch = html.match(/<script\s+id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/);
+  if (nextDataMatch) {
+    const nextData = JSON.parse(nextDataMatch[1]);
+    const entity = nextData?.props?.pageProps?.state?.data?.entity;
+    const trackList = entity?.trackList;
+    if (Array.isArray(trackList) && trackList.length > 0) {
+      const tracks: SpotifyTrack[] = trackList
+        .map((t: any) => ({
+          id: t.uri?.split(':').pop() || '',
+          name: t.title || '',
+          artists: [{ name: t.subtitle || 'Unknown' }],
+          album: { name: '', images: [] },
+          duration_ms: t.duration || 0,
+          external_urls: { spotify: `https://open.spotify.com/track/${t.uri?.split(':').pop() || ''}` },
+        }))
+        .filter((t: SpotifyTrack) => t.id && t.name);
+
+      const coverUrl = entity.coverArt?.sources?.[0]?.url;
+      return {
+        playlist: {
+          id: playlistId,
+          name: entity.title || 'Imported Playlist',
+          description: '',
+          images: coverUrl ? [{ url: coverUrl }] : [],
+        },
+        tracks,
+      };
+    }
+  }
+
+  const ldJsonMatch = html.match(/<script\s+type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/);
+  if (ldJsonMatch) {
+    const ldData = JSON.parse(ldJsonMatch[1]);
+    if (ldData.track) {
+      const tracks: SpotifyTrack[] = (Array.isArray(ldData.track) ? ldData.track : [ldData.track])
+        .map((t: any) => ({
+          id: t.url?.split('/').pop() || '',
+          name: t.name || '',
+          artists: [{ name: t.byArtist?.name || 'Unknown' }],
+          album: { name: t.inAlbum?.name || '', images: [] },
+          duration_ms: _parseDuration(t.duration || ''),
+          external_urls: { spotify: t.url || '' },
+        }));
+
+      return {
+        playlist: {
+          id: playlistId,
+          name: ldData.name || 'Imported Playlist',
+          description: '',
+          images: [],
+        },
+        tracks,
+      };
+    }
+  }
+
+  throw new Error('Could not extract tracks from embed page');
+}
+
+function _parseDuration(iso8601: string): number {
+  const match = iso8601.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+  if (!match) return 0;
+  const hours = parseInt(match[1] || '0');
+  const minutes = parseInt(match[2] || '0');
+  const seconds = parseInt(match[3] || '0');
+  return (hours * 3600 + minutes * 60 + seconds) * 1000;
+}
 

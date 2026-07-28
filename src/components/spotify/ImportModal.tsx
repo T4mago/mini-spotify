@@ -17,7 +17,6 @@ export function ImportModal({ isOpen, onClose, onComplete }: ImportModalProps) {
 
   const handleImport = async () => {
     if (!url.trim()) { setError('Please enter a URL'); return; }
-    if (!url.match(/playlist\/([a-zA-Z0-9]+)/)) { setError('Invalid Spotify URL'); return; }
     try {
       setError('');
       await importPlaylist(url);

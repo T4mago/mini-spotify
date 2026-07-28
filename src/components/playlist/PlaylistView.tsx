@@ -1,8 +1,9 @@
 import { usePlaylist } from '../../hooks/usePlaylist';
 import { useLibrary } from '../../hooks/useLibrary';
 import { useAudio } from '../../hooks/useAudio';
+import { useLenisScroll } from '../../hooks/useLenisScroll';
 import { SongRow } from '../library/SongRow';
-import { FiArrowLeft, FiPlay, FiMusic } from 'react-icons/fi';
+import { FiArrowLeft, FiPlay, FiMusic, FiTrash2 } from 'react-icons/fi';
 
 interface PlaylistViewProps {
   playlistId: string;
@@ -10,9 +11,10 @@ interface PlaylistViewProps {
 }
 
 export function PlaylistView({ playlistId, onBack }: PlaylistViewProps) {
-  const { playlists, removeSongFromPlaylist } = usePlaylist();
+  const { playlists, deletePlaylist, removeSongFromPlaylist } = usePlaylist();
   const { songs } = useLibrary();
   const { setQueue } = useAudio();
+  const { ref: lenisRef } = useLenisScroll();
   
   const playlist = playlists.find(p => p.id === playlistId);
   if (!playlist) return <div className="glass-strong flex-1 rounded-3xl flex items-center justify-center"><p className="text-[var(--text-secondary)]">Not found</p></div>;
@@ -53,12 +55,16 @@ export function PlaylistView({ playlistId, onBack }: PlaylistViewProps) {
                 <FiPlay size={12} className="inline mr-1.5" fill="currentColor" />
                 Play all
               </button>
+              <button onClick={() => { if (window.confirm(`Delete "${playlist.name}"?`)) { deletePlaylist(playlistId); onBack(); } }} className="glass-interactive px-3 py-2 rounded-full text-xs font-semibold text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-all">
+                <FiTrash2 size={12} className="inline mr-1" />
+                Delete
+              </button>
             </div>
           </div>
         </div>
       </div>
       
-      <div className="flex-1 scroll-container px-6 pb-4">
+      <div ref={lenisRef} className="flex-1 scroll-container px-6 pb-4">
         {playlistSongs.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16">
             <p className="text-sm text-[var(--text-secondary)]">This playlist is empty</p>

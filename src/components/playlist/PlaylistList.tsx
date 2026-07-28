@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { usePlaylist } from '../../hooks/usePlaylist';
 import { useSpotify } from '../../hooks/useSpotify';
 import { useLibrary } from '../../hooks/useLibrary';
+import { useLenisScroll } from '../../hooks/useLenisScroll';
 import { CreatePlaylistModal } from './CreatePlaylistModal';
 import { ImportModal } from '../spotify/ImportModal';
 import { MatchDialog } from '../spotify/MatchDialog';
@@ -15,12 +16,13 @@ interface PlaylistListProps {
 
 export function PlaylistList({ selectedPlaylistId, onSelectPlaylist }: PlaylistListProps) {
   const { playlists, loadPlaylists, createPlaylist } = usePlaylist();
-  const { matchedTracks, isConnected, checkConnection, playlistName } = useSpotify();
+  const { checkConnection } = useSpotify();
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isImportModalOpen, setIsImportModalOpen] = useState(false);
   const [isMatchDialogOpen, setIsMatchDialogOpen] = useState(false);
   const [importedTracks, setImportedTracks] = useState<SpotifyTrack[]>([]);
   const [importedPlaylistName, setImportedPlaylistName] = useState('');
+  const { ref: lenisRef } = useLenisScroll();
   
   useEffect(() => { loadPlaylists(); checkConnection(); }, [loadPlaylists, checkConnection]);
   
@@ -53,15 +55,13 @@ export function PlaylistList({ selectedPlaylistId, onSelectPlaylist }: PlaylistL
           </p>
         </div>
         <div className="flex gap-2">
-          {isConnected && (
-            <button
-              onClick={() => setIsImportModalOpen(true)}
-              className="glass-interactive flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold text-[var(--text-primary)]"
-            >
-              <FiDownload size={14} />
-              Import
-            </button>
-          )}
+          <button
+            onClick={() => setIsImportModalOpen(true)}
+            className="glass-interactive flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold text-[var(--text-primary)]"
+          >
+            <FiDownload size={14} />
+            Import
+          </button>
           <button
             onClick={() => setIsCreateModalOpen(true)}
             className="glass-interactive flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold text-[var(--text-primary)]"
@@ -72,7 +72,7 @@ export function PlaylistList({ selectedPlaylistId, onSelectPlaylist }: PlaylistL
         </div>
       </div>
       
-      <div className="flex-1 scroll-container px-6 pb-4">
+      <div ref={lenisRef} className="flex-1 scroll-container px-6 pb-4">
         {playlists.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16">
             <div className="w-16 h-16 rounded-2xl glass-solid flex items-center justify-center mb-4">
@@ -81,15 +81,13 @@ export function PlaylistList({ selectedPlaylistId, onSelectPlaylist }: PlaylistL
             <p className="text-sm font-semibold text-[var(--text-primary)] mb-1">No playlists yet</p>
             <p className="text-xs text-[var(--text-secondary)] mb-4">Create a playlist to organize your music</p>
             <div className="flex gap-2">
-              {isConnected && (
-                <button
-                  onClick={() => setIsImportModalOpen(true)}
-                  className="glass-interactive px-5 py-2 rounded-full text-xs font-semibold text-[var(--text-primary)]"
-                >
-                  <FiDownload size={13} className="inline mr-1.5" />
-                  Import from Spotify
-                </button>
-              )}
+              <button
+                onClick={() => setIsImportModalOpen(true)}
+                className="glass-interactive px-5 py-2 rounded-full text-xs font-semibold text-[var(--text-primary)]"
+              >
+                <FiDownload size={13} className="inline mr-1.5" />
+                Import from Spotify
+              </button>
               <button
                 onClick={() => setIsCreateModalOpen(true)}
                 className="glass-interactive px-5 py-2 rounded-full text-xs font-semibold text-[var(--text-primary)]"

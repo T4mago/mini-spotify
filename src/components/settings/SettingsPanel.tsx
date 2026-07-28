@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTheme } from '../../hooks/useTheme';
 import { useSpotify } from '../../hooks/useSpotify';
+import { useLenisScroll } from '../../hooks/useLenisScroll';
 import { FiCheck, FiSun, FiMoon, FiMonitor, FiMusic, FiExternalLink, FiX } from 'react-icons/fi';
 
 const PRESET_COLORS = ['#1db954', '#3b82f6', '#8b5cf6', '#ef4444', '#f59e0b', '#ec4899', '#06b6d4', '#f97316'];
@@ -9,6 +10,7 @@ const themeIcons = { dark: FiMoon, light: FiSun, system: FiMonitor };
 export function SettingsPanel() {
   const { theme, accentColor, setTheme, setAccentColor } = useTheme();
   const { isConnected, checkConnection, login, setCredentials, disconnect } = useSpotify();
+  const { ref: lenisRef } = useLenisScroll();
   const [clientId, setClientId] = useState('');
   const [clientSecret, setClientSecret] = useState('');
   const [saved, setSaved] = useState(false);
@@ -33,7 +35,7 @@ export function SettingsPanel() {
         <p className="text-xs text-[var(--text-secondary)] mt-1">Customize your experience</p>
       </div>
       
-      <div className="px-8 pb-8 space-y-5 scroll-container flex-1 min-h-0">
+      <div ref={lenisRef} className="px-8 pb-8 space-y-5 scroll-container flex-1 min-h-0">
         {/* Theme */}
         <div className="glass p-5 rounded-3xl">
           <h3 className="text-[10px] font-bold text-[var(--text-secondary)] mb-4 uppercase tracking-wider">Appearance</h3>

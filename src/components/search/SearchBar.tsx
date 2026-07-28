@@ -1,14 +1,21 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useCallback } from 'react';
 import { useLibrary } from '../../hooks/useLibrary';
 import { useAudio } from '../../hooks/useAudio';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { useLenisScroll } from '../../hooks/useLenisScroll';
 import { SongRow } from '../library/SongRow';
 import { FiSearch, FiX } from 'react-icons/fi';
 
 export function SearchBar() {
   const { songs, loadSongs } = useLibrary();
   const [query, setQuery] = useState('');
-  const { containerRef, refresh } = useScrollReveal();
+  const { containerRef: scrollRef, refresh } = useScrollReveal();
+  const { ref: lenisRef } = useLenisScroll();
+
+  const containerRef = useCallback((node: HTMLDivElement | null) => {
+    scrollRef.current = node;
+    lenisRef.current = node;
+  }, []);
   
   useEffect(() => {
     if (songs.length === 0) loadSongs();
