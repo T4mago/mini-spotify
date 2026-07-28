@@ -29,6 +29,7 @@
   --text-primary: #1a1a2e;
   --text-secondary: rgba(26, 26, 46, 0.6);
   --text-tertiary: rgba(26, 26, 46, 0.35);
+  --lyrics-inactive: rgba(26, 26, 46, 0.6);
 
   /* Accent */
   --accent: #1db954;
@@ -61,6 +62,7 @@
   --text-primary: #f0f0f5;
   --text-secondary: rgba(240, 240, 245, 0.6);
   --text-tertiary: rgba(240, 240, 245, 0.35);
+  --lyrics-inactive: #ffffff;
 }
 
 * {

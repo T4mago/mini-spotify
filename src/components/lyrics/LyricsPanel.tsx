@@ -157,7 +157,7 @@ export function LyricsPanel({ isOpen, onClose, onEditLyrics }: LyricsPanelProps)
                   className={`py-2 px-3 cursor-pointer text-center transition-all duration-300 ease-out ${
                     isActive 
                       ? 'text-[13px] font-bold text-[var(--accent)] scale-105 opacity-100 drop-shadow-[0_2px_8px_rgba(29,185,84,0.25)]' 
-                      : 'text-xs text-[var(--text-secondary)] opacity-35 hover:opacity-95 hover:scale-[1.02]'
+                      : 'text-xs text-[var(--lyrics-inactive)] opacity-35 hover:opacity-95 hover:scale-[1.02]'
                   }`}
                 >
                   {line.text}
@@ -166,7 +166,7 @@ export function LyricsPanel({ isOpen, onClose, onEditLyrics }: LyricsPanelProps)
             })}
           </div>
         ) : (
-          <div className="whitespace-pre-wrap text-center leading-relaxed text-xs text-[var(--text-secondary)] py-4">
+          <div className="whitespace-pre-wrap text-center leading-relaxed text-xs text-[var(--lyrics-inactive)] py-4">
             {currentLyrics.content}
           </div>
         )}
