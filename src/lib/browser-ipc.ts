@@ -181,10 +181,27 @@ const handlers: Record<string, ChannelHandler> = {
   'spotify:disconnect': () => import('./browser-spotify').then(m => m.disconnect()),
   'spotify:accessToken': () => import('./browser-spotify').then(m => m.ensureToken()),
   'spotify:import': async (url: string) => {
-    const { getPlaylist, getPlaylistTracks, parsePlaylistId } = await import('./browser-spotify');
+    const { parsePlaylistId, getPlaylist, getPlaylistTracks } = await import('./browser-spotify');
     const playlistId = parsePlaylistId(url);
     console.log('[PWA] spotify:import playlistId:', playlistId);
     if (!playlistId) throw new Error('Invalid Spotify playlist URL');
+
+    // Try Vercel Serverless Function first (gratis, bypass CORS)
+    try {
+      console.log('[PWA] spotify:import trying Vercel API proxy...');
+      const response = await fetch(`/api/import?id=${playlistId}`);
+      if (response.ok) {
+        const data = await response.json();
+        console.log('[PWA] spotify:import proxy success:', data.playlist.name);
+        return data;
+      }
+      console.warn('[PWA] spotify:import proxy failed with status:', response.status);
+    } catch (err) {
+      console.warn('[PWA] spotify:import proxy error:', err);
+    }
+
+    // Fallback to client-side Spotify API (requires logged-in user)
+    console.log('[PWA] Falling back to client-side Spotify API...');
     const playlist = await getPlaylist(playlistId);
     console.log('[PWA] spotify:import playlist:', playlist?.name);
     const tracks = await getPlaylistTracks(playlistId);
