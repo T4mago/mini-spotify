@@ -36,7 +36,7 @@ export function MainContent({ activeView }: MainContentProps) {
   };
   
   return (
-    <div className="flex-1 h-full overflow-hidden flex flex-col">
+    <div className="flex-1 h-full overflow-hidden flex flex-col max-w-full">
       {renderView()}
     </div>
   );

@@ -72,12 +72,12 @@ function App() {
       <div className="h-screen flex flex-col relative" style={{ height: '100dvh' }}>
         <div className="wallpaper-bg" />
 
-        <div className="relative z-10 flex-1 flex flex-col md:p-4 p-3 md:gap-3 gap-2 min-h-0">
+        <div className="relative z-10 flex-1 flex flex-col md:p-4 p-3 md:gap-3 gap-2 min-h-0 w-full max-w-full">
           <div className="flex justify-center">
             <Header activeView={activeView} />
           </div>
 
-          <div className="flex-1 flex md:gap-3 gap-0 overflow-hidden min-h-0">
+          <div className="flex-1 flex md:gap-3 gap-0 overflow-hidden min-h-0 w-full">
             <Sidebar activeView={activeView} onViewChange={setActiveView} />
             <MainContent activeView={activeView} />
             <QueuePanel

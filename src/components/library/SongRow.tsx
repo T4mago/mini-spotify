@@ -94,7 +94,7 @@ export function SongRow({ song, index, onPlay }: SongRowProps) {
         else play(song);
       }}
     >
-      <div className="w-10 flex items-center justify-center">
+      <div className="w-10 flex items-center justify-center flex-shrink-0">
         {isActive && isPlaying ? (
           <div className="flex items-end gap-[2px] h-3.5">
             <div className="eq-bar" />
@@ -159,7 +159,7 @@ export function SongRow({ song, index, onPlay }: SongRowProps) {
         {formatTime(song.duration)} sec
       </span>
 
-      <div className="w-24 flex items-center justify-end gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-[400ms] ease-spring pr-1">
+      <div className="w-24 flex items-center justify-end gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-[400ms] ease-spring pr-1 flex-shrink-0">
         <button
           onClick={(e) => {
             e.stopPropagation();

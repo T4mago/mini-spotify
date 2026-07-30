@@ -135,7 +135,7 @@ export function LibraryBrowser() {
                 <span className="flex-1">Title</span>
                 <span className="w-20 text-center hidden md:block">Tag</span>
                 <span className="w-28 text-center hidden lg:block">Listened</span>
-                <span className="w-14 md:w-16 text-right">Duration</span>
+                <span className="w-14 md:w-16 text-right flex-shrink-0">Duration</span>
                 <span className="w-24 hidden md:block" />
               </div>
 
