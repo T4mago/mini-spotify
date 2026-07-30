@@ -93,7 +93,7 @@ export const useSpotifyPlayer = create<SpotifyPlayerState>((set, get) => ({
     ytPlayer = new (window as any).YT.Player('youtube-player', {
       height: '200',
       width: '200',
-      videoId: 'dQw4w9WgXcQ', // Dummy video to ensure onReady fires
+      videoId: 'M7FIvfx5J10', // ponytail: silent ambient init, replaced Rick Roll
       playerVars: {
         'playsinline': 1,
         'autoplay': 0,
@@ -179,6 +179,7 @@ export const useSpotifyPlayer = create<SpotifyPlayerState>((set, get) => ({
         set({ isPlaying: true });
       } else {
         console.error('[YoutubeFallback] Failed to load video. ytPlayer status:', !!ytPlayer);
+        if (ytPlayer && ytPlayer.stopVideo) ytPlayer.stopVideo();
         set({ error: 'Failed to find audio on YouTube or player not ready', isPlaying: false });
       }
     } catch (err: any) {

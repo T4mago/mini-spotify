@@ -69,12 +69,20 @@ async function scanDirectory(dirHandle: FileSystemDirectoryHandle): Promise<Song
 
 async function youtubeSearch(query: string): Promise<string | null> {
   try {
-    const res = await fetch(
-      `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}&sp=EgIQAQ%3D%3D`
-    );
-    const html = await res.text();
-    const match = html.match(/"videoId":"([^"]+)"/);
-    return match?.[1] ?? null;
+    // ponytail: Vercel API endpoint handles CORS, falls back to direct scrape for Electron
+    const isElectron = typeof window !== 'undefined' && !!(window as any).electronAPI;
+    if (isElectron) {
+      const res = await fetch(
+        `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}&sp=EgIQAQ%3D%3D`
+      );
+      const html = await res.text();
+      const match = html.match(/"videoId":"([^"]+)"/);
+      return match?.[1] ?? null;
+    }
+    const res = await fetch(`/api/youtube-search?q=${encodeURIComponent(query)}`);
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data.videoId ?? null;
   } catch {
     return null;
   }
