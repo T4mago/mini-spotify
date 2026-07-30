@@ -175,7 +175,7 @@ export function PlayerBar({ isLyricsOpen, onToggleLyrics, isQueueOpen, onToggleQ
 
         <div className="flex-1 flex flex-col items-center gap-1">
           <PlaybackControls />
-          <div className="flex items-center gap-2 w-full max-w-[260px]">
+          <div className="flex items-center gap-2 w-full max-w-full md:max-w-[260px]">
             <span className="text-[9px] text-[var(--text-tertiary)] w-7 text-right tabular-nums font-medium">{formatTime(currentTime)}</span>
             <div
               className="flex-1 h-[2px] progress-track group"

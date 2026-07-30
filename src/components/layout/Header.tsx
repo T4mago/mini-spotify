@@ -32,7 +32,7 @@ export function Header({ activeView: _activeView }: HeaderProps) {
   return (
     <>
       <div
-        className="glass-pill h-10 px-1.5 flex items-center justify-between animate-fade relative z-30 mx-auto w-max min-w-[200px]"
+        className="glass-pill h-10 px-1.5 flex items-center justify-between animate-fade relative z-30 mx-auto w-full md:w-max md:min-w-[200px]"
         style={{ WebkitAppRegion: 'drag' } as React.CSSProperties}
       >
         <div className="flex items-center gap-1" style={{ WebkitAppRegion: 'no-drag' } as React.CSSProperties}>

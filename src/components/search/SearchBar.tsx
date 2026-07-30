@@ -41,7 +41,7 @@ export function SearchBar() {
   return (
     <div className="double-bezel flex-1 rounded-[calc(2rem+2px)] flex flex-col overflow-hidden animate-fade">
       <div className="double-bezel-inner flex-1 flex flex-col overflow-hidden">
-      <div className="px-6 pt-6 pb-4">
+      <div className="md:px-6 px-3 md:pt-6 pt-4 md:pb-4 pb-3">
         <div className="relative">
           <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-tertiary)]" size={16} />
           <input
@@ -65,17 +65,18 @@ export function SearchBar() {
         )}
       </div>
       
-      <div ref={containerRef} className="flex-1 scroll-container px-6 pb-4">
+      <div ref={containerRef} className="flex-1 scroll-container md:px-6 px-3 pb-4">
         {!query.trim() ? (
-          <div className="flex flex-col items-center justify-center py-16">
-            <div className="w-16 h-16 rounded-2xl glass-solid flex items-center justify-center mb-4">
-              <FiSearch size={24} className="text-[var(--text-tertiary)]" />
+          <div className="flex flex-col items-center justify-center py-12 md:py-16">
+            <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl glass-solid flex items-center justify-center mb-3 md:mb-4">
+              <FiSearch size={20} className="md:hidden text-[var(--text-tertiary)]" />
+              <FiSearch size={24} className="hidden md:block text-[var(--text-tertiary)]" />
             </div>
-            <p className="text-sm font-semibold text-[var(--text-primary)] mb-1">Search your library</p>
-            <p className="text-xs text-[var(--text-secondary)]">Type to find songs, artists, or albums</p>
+            <p className="text-xs md:text-sm font-semibold text-[var(--text-primary)] mb-0.5 md:mb-1">Search your library</p>
+            <p className="text-[10px] md:text-xs text-[var(--text-secondary)]">Type to find songs, artists, or albums</p>
           </div>
         ) : filteredSongs.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-16">
+          <div className="flex flex-col items-center justify-center py-12 md:py-16">
             <p className="text-sm font-semibold text-[var(--text-primary)] mb-1">No results</p>
             <p className="text-xs text-[var(--text-secondary)]">Try a different search term</p>
           </div>

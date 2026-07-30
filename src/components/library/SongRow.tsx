@@ -127,8 +127,8 @@ export function SongRow({ song, index, onPlay }: SongRowProps) {
         )}
       </div>
 
-      <div className="flex-1 min-w-0 flex items-center gap-4">
-        <div className="min-w-0 flex-shrink-0 w-40 sm:w-48 lg:w-56">
+      <div className="flex-1 min-w-0 flex items-center md:gap-4 gap-2">
+        <div className="min-w-0 flex-1 md:flex-shrink-0 md:w-40 lg:w-48 xl:w-56">
           <p className={`text-sm font-semibold truncate transition-colors duration-[400ms] ease-spring
             ${isActive ? 'text-[var(--accent)]' : 'text-[var(--text-primary)]'}`}>
             {song.title}
@@ -155,11 +155,11 @@ export function SongRow({ song, index, onPlay }: SongRowProps) {
         </span>
       </div>
 
-      <span className="text-[11px] text-[var(--text-secondary)] w-16 text-right tabular-nums font-medium">
+      <span className="text-[10px] md:text-[11px] text-[var(--text-secondary)] w-12 md:w-16 text-right tabular-nums font-medium">
         {formatTime(song.duration)} sec
       </span>
 
-      <div className="w-24 flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-[400ms] ease-spring pr-1">
+      <div className="w-24 flex items-center justify-end gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-[400ms] ease-spring pr-1">
         <button
           onClick={(e) => {
             e.stopPropagation();

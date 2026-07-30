@@ -31,15 +31,15 @@ export function SettingsPanel() {
   return (
     <div className="double-bezel flex-1 rounded-[calc(2rem+2px)] overflow-hidden animate-fade flex flex-col">
       <div className="double-bezel-inner flex-1 flex flex-col overflow-hidden">
-      <div className="px-8 pt-8 pb-6 flex-shrink-0">
-        <h2 className="text-3xl font-extrabold text-[var(--text-primary)] tracking-tight">Settings</h2>
-        <p className="text-xs text-[var(--text-secondary)] mt-1">Customize your experience</p>
+      <div className="md:px-8 px-4 md:pt-8 pt-5 md:pb-6 pb-3 flex-shrink-0">
+        <h2 className="text-2xl md:text-3xl font-extrabold text-[var(--text-primary)] tracking-tight">Settings</h2>
+        <p className="text-[10px] md:text-xs text-[var(--text-secondary)] mt-0.5 md:mt-1">Customize your experience</p>
       </div>
       
-      <div ref={lenisRef} className="px-8 pb-8 space-y-5 scroll-container flex-1 min-h-0">
+      <div ref={lenisRef} className="md:px-8 px-4 md:pb-8 pb-4 space-y-3 md:space-y-5 scroll-container flex-1 min-h-0">
         {/* Theme */}
-        <div className="bg-[rgba(255,255,255,0.02)] p-5 rounded-[2rem] ring-1 ring-white/5">
-          <h3 className="text-[10px] font-bold text-[var(--text-secondary)] mb-4 uppercase tracking-[0.2em]">Appearance</h3>
+        <div className="bg-[rgba(255,255,255,0.02)] md:p-5 p-4 rounded-[2rem] ring-1 ring-white/5">
+          <h3 className="text-[9px] md:text-[10px] font-bold text-[var(--text-secondary)] mb-3 md:mb-4 uppercase tracking-[0.2em]">Appearance</h3>
           <div className="grid grid-cols-3 gap-3">
             {(['dark', 'light', 'system'] as const).map((t) => {
               const Icon = themeIcons[t];
@@ -56,8 +56,8 @@ export function SettingsPanel() {
         </div>
         
         {/* Colors */}
-        <div className="bg-[rgba(255,255,255,0.02)] p-5 rounded-[2rem] ring-1 ring-white/5">
-          <h3 className="text-[10px] font-bold text-[var(--text-secondary)] mb-4 uppercase tracking-[0.2em]">Accent Color</h3>
+        <div className="bg-[rgba(255,255,255,0.02)] md:p-5 p-4 rounded-[2rem] ring-1 ring-white/5">
+          <h3 className="text-[9px] md:text-[10px] font-bold text-[var(--text-secondary)] mb-3 md:mb-4 uppercase tracking-[0.2em]">Accent Color</h3>
           <div className="flex gap-3 mb-4 flex-wrap">
             {PRESET_COLORS.map((color) => (
               <button key={color} onClick={() => setAccentColor(color)}
@@ -75,8 +75,8 @@ export function SettingsPanel() {
         </div>
         
         {/* Spotify Integration */}
-        <div className="bg-[rgba(255,255,255,0.02)] p-5 rounded-[2rem] ring-1 ring-white/5">
-          <div className="flex items-center justify-between mb-4">
+        <div className="bg-[rgba(255,255,255,0.02)] md:p-5 p-4 rounded-[2rem] ring-1 ring-white/5">
+          <div className="flex items-center justify-between mb-3 md:mb-4">
             <h3 className="text-[10px] font-bold text-[var(--text-secondary)] uppercase tracking-[0.2em]">Spotify Integration</h3>
             <div className={`flex items-center gap-1.5 text-[10px] font-bold ${isConnected ? 'text-emerald-500' : 'text-[var(--text-tertiary)]'}`}>
               <span className={`w-1.5 h-1.5 rounded-full ${isConnected ? 'bg-emerald-500' : 'bg-[var(--text-tertiary)]'}`} />
@@ -130,8 +130,8 @@ export function SettingsPanel() {
         </div>
         
         {/* About */}
-        <div className="bg-[rgba(255,255,255,0.02)] p-5 rounded-[2rem] ring-1 ring-white/5">
-          <h3 className="text-[10px] font-bold text-[var(--text-secondary)] mb-4 uppercase tracking-[0.2em]">About</h3>
+        <div className="bg-[rgba(255,255,255,0.02)] md:p-5 p-4 rounded-[2rem] ring-1 ring-white/5">
+          <h3 className="text-[9px] md:text-[10px] font-bold text-[var(--text-secondary)] mb-3 md:mb-4 uppercase tracking-[0.2em]">About</h3>
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[var(--accent)] to-[#14803a] flex items-center justify-center shadow-md">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
