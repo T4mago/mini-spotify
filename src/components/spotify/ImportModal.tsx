@@ -26,7 +26,7 @@ export function ImportModal({ isOpen, onClose, onComplete }: ImportModalProps) {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 animate-fade" style={{ background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)' }}>
-      <div className="double-bezel w-[420px] rounded-[calc(2rem+2px)] overflow-hidden animate-slide-up">
+      <div className="double-bezel w-full max-w-[420px] mx-4 rounded-[calc(2rem+2px)] overflow-hidden animate-slide-up">
         <div className="double-bezel-inner overflow-hidden">
         <div className="flex items-center justify-between px-6 py-5 border-b border-[rgba(255,255,255,0.03)]">
           <div className="flex items-center gap-3">
