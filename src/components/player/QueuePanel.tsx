@@ -17,8 +17,9 @@ export function QueuePanel({ isOpen, onClose }: QueuePanelProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="glass-strong w-72 rounded-3xl flex flex-col m-0 ml-3 animate-slide-left overflow-hidden">
-      <div className="flex items-center justify-between px-5 py-4 border-b border-[rgba(0,0,0,0.04)]">
+    <div className="double-bezel w-72 hidden md:flex rounded-[calc(2rem+2px)] flex-col m-0 ml-3 animate-slide-left overflow-hidden">
+      <div className="double-bezel-inner flex-1 flex flex-col overflow-hidden">
+      <div className="flex items-center justify-between px-5 py-4 border-b border-[rgba(255,255,255,0.03)]">
         <div className="flex items-center gap-2">
           <FiList size={13} className="text-[var(--accent)]" />
           <h3 className="font-bold text-xs text-[var(--text-primary)]">Queue</h3>
@@ -92,7 +93,7 @@ export function QueuePanel({ isOpen, onClose }: QueuePanelProps) {
                   {upNext.map((song, i) => (
                     <div
                       key={`upnext-${song.id}-${i}`}
-                      className="flex items-center gap-2.5 px-2.5 py-2 rounded-xl hover:bg-[rgba(255,255,255,0.25)] transition-colors group cursor-pointer"
+                      className="flex items-center gap-2.5 px-2.5 py-2 rounded-xl hover:bg-[rgba(255,255,255,0.03)] transition-all duration-[400ms] ease-spring group cursor-pointer"
                       onClick={() => play(song)}
                     >
                       <span className="text-[9px] text-[var(--accent)] w-3 text-center font-bold flex-shrink-0">{i + 1}</span>
@@ -134,7 +135,7 @@ export function QueuePanel({ isOpen, onClose }: QueuePanelProps) {
                     return (
                       <div
                         key={`default-${song.id}-${realIndex}`}
-                        className="flex items-center gap-2.5 px-2.5 py-2 rounded-xl hover:bg-[rgba(255,255,255,0.25)] transition-colors group cursor-pointer opacity-60 hover:opacity-100"
+                        className="flex items-center gap-2.5 px-2.5 py-2 rounded-xl hover:bg-[rgba(255,255,255,0.03)] transition-all duration-[400ms] ease-spring group cursor-pointer opacity-60 hover:opacity-100"
                         onClick={() => play(song)}
                       >
                         <span className="text-[9px] text-[var(--text-tertiary)] w-3 text-center tabular-nums flex-shrink-0">{i + 1}</span>
@@ -159,6 +160,7 @@ export function QueuePanel({ isOpen, onClose }: QueuePanelProps) {
             )}
           </>
         )}
+      </div>
       </div>
     </div>
   );

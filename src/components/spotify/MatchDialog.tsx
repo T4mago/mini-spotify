@@ -41,9 +41,10 @@ export function MatchDialog({ isOpen, onClose, onComplete, playlistName, tracks 
   };
 
   return (
-    <div className="fixed inset-0 bg-black/20 backdrop-blur-sm flex items-center justify-center z-50 animate-fade">
-      <div className="glass-strong w-[660px] max-h-[80vh] rounded-3xl flex flex-col overflow-hidden animate-slide-up">
-        <div className="flex items-center justify-between px-6 py-5 border-b border-[rgba(0,0,0,0.04)]">
+    <div className="fixed inset-0 flex items-center justify-center z-50 animate-fade" style={{ background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)' }}>
+      <div className="double-bezel w-[660px] max-h-[80vh] rounded-[calc(2rem+2px)] flex flex-col overflow-hidden animate-slide-up">
+        <div className="double-bezel-inner flex-1 flex flex-col overflow-hidden">
+        <div className="flex items-center justify-between px-6 py-5 border-b border-[rgba(255,255,255,0.03)]">
           <div>
             <h3 className="font-bold text-sm text-[var(--text-primary)]">Import Tracks</h3>
             <p className="text-[10px] text-[var(--text-tertiary)] mt-0.5">Click to exclude tracks from import</p>
@@ -55,8 +56,8 @@ export function MatchDialog({ isOpen, onClose, onComplete, playlistName, tracks 
             const isExcl = excluded.has(i);
             return (
               <div key={i} onClick={() => toggle(i)}
-                className={`flex items-center gap-3 p-3 rounded-2xl cursor-pointer transition-all
-                  ${isExcl ? 'opacity-40 bg-[rgba(0,0,0,0.02)]' : 'bg-[rgba(0,0,0,0.02)] hover:bg-[rgba(0,0,0,0.04)]'}`}>
+                className={`flex items-center gap-3 p-3 rounded-[calc(2rem-0.5rem)] cursor-pointer transition-all duration-[400ms] ease-spring
+                  ${isExcl ? 'opacity-40 bg-[rgba(255,255,255,0.02)]' : 'bg-[rgba(255,255,255,0.02)] hover:bg-[rgba(255,255,255,0.04)]'}`}>
                 <div className="w-10 h-10 rounded-xl overflow-hidden bg-[rgba(0,0,0,0.04)] flex-shrink-0 flex items-center justify-center">
                   {track.album.images[0] ? (
                     <img src={track.album.images[0].url} alt="" className="w-full h-full object-cover" />
@@ -71,16 +72,17 @@ export function MatchDialog({ isOpen, onClose, onComplete, playlistName, tracks 
             );
           })}
         </div>
-        <div className="px-6 py-4 border-t border-[rgba(0,0,0,0.04)] flex justify-between items-center">
+        <div className="px-6 py-4 border-t border-[rgba(255,255,255,0.03)] flex justify-between items-center">
           <p className="text-[11px] text-[var(--text-secondary)]"><span className="font-bold text-[var(--text-primary)]">{selectedTracks.length}</span> of {tracks.length} tracks</p>
           <div className="flex gap-3">
-            <button onClick={onClose} className="glass-interactive px-5 py-2.5 rounded-full text-xs font-semibold text-[var(--text-secondary)]">Cancel</button>
+            <button onClick={onClose} className="px-5 py-2.5 rounded-full text-xs font-semibold text-[var(--text-secondary)] bg-[rgba(255,255,255,0.04)] hover:bg-[rgba(255,255,255,0.08)] transition-all duration-[350ms] ease-spring">Cancel</button>
             <button onClick={handleCreate} disabled={selectedTracks.length === 0 || creating}
-              className="bg-[var(--text-primary)] text-white px-5 py-2.5 rounded-full text-xs font-semibold disabled:opacity-40 hover:scale-105 transition-transform shadow-md flex items-center gap-1.5">
+              className="bg-[var(--accent)] text-black px-5 py-2.5 rounded-full text-xs font-bold disabled:opacity-40 hover:scale-105 transition-all duration-[400ms] ease-spring active:scale-95 flex items-center gap-1.5">
               {creating ? <><div className="animate-spin w-3 h-3 border-2 border-white border-t-transparent rounded-full" /> Creating...</> : `Import (${selectedTracks.length})`}
             </button>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

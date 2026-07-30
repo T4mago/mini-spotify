@@ -1,7 +1,7 @@
 import { useEffect, useRef, useMemo } from 'react';
 import { useLyrics, parseLRC } from '../../hooks/useLyrics';
 import { useAudio } from '../../hooks/useAudio';
-import { FiEdit2, FiX, FiMusic, FiSliders } from 'react-icons/fi';
+import { FiX, FiMusic, FiSliders } from 'react-icons/fi';
 
 import { Song } from '../../types';
 
@@ -93,19 +93,23 @@ export function LyricsPanel({ isOpen, onClose, onEditLyrics }: LyricsPanelProps)
   if (!isOpen) return null;
   
   return (
-    <div className="glass-strong w-72 rounded-3xl flex flex-col m-0 ml-3 animate-slide-left overflow-hidden">
-      <div className="flex items-center justify-between px-5 py-4 border-b border-[rgba(0,0,0,0.04)]">
+    <div className="double-bezel w-72 hidden md:flex rounded-[calc(2rem+2px)] flex-col m-0 ml-3 animate-slide-left overflow-hidden">
+      <div className="double-bezel-inner flex-1 flex flex-col overflow-hidden">
+      <div className="flex items-center justify-between px-5 py-4 border-b border-[rgba(255,255,255,0.03)]">
         <div className="flex items-center gap-2">
           <FiMusic size={13} className="text-[var(--accent)]" />
           <h3 className="font-bold text-xs text-[var(--text-primary)]">Lyrics</h3>
         </div>
         <div className="flex gap-1">
           {currentSong && (
-            <button onClick={() => onEditLyrics(currentSong)} className="w-7 h-7 rounded-full flex items-center justify-center hover:bg-[rgba(0,0,0,0.05)] text-[var(--text-secondary)] transition-all">
-              <FiEdit2 size={12} />
+            <button onClick={() => onEditLyrics(currentSong)} className="w-7 h-7 rounded-full flex items-center justify-center hover:bg-[rgba(255,255,255,0.05)] text-[var(--text-secondary)] transition-all duration-[350ms] ease-spring active:scale-90">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+              </svg>
             </button>
           )}
-          <button onClick={onClose} className="w-7 h-7 rounded-full flex items-center justify-center hover:bg-[rgba(0,0,0,0.05)] text-[var(--text-secondary)] transition-all">
+          <button onClick={onClose} className="w-7 h-7 rounded-full flex items-center justify-center hover:bg-[rgba(255,255,255,0.05)] text-[var(--text-secondary)] transition-all duration-[350ms] ease-spring active:scale-90">
             <FiX size={12} />
           </button>
         </div>
@@ -139,7 +143,7 @@ export function LyricsPanel({ isOpen, onClose, onEditLyrics }: LyricsPanelProps)
             </div>
             <button 
               onClick={() => onEditLyrics(currentSong)} 
-              className="bg-[var(--accent)] hover:bg-[var(--accent)]/80 text-black px-4 py-2 rounded-full text-[10px] font-bold transition-all hover:scale-105 active:scale-95 shadow-sm"
+              className="bg-[var(--accent)] hover:bg-[var(--accent)]/80 text-black px-4 py-2 rounded-full text-[10px] font-bold transition-all duration-[400ms] ease-spring hover:scale-105 active:scale-95"
             >
               Add Lyrics
             </button>
@@ -174,7 +178,7 @@ export function LyricsPanel({ isOpen, onClose, onEditLyrics }: LyricsPanelProps)
 
       {/* Offset Sync Control */}
       {currentLyrics && (
-        <div className="flex items-center justify-between px-5 py-2.5 bg-[rgba(0,0,0,0.08)] border-t border-[rgba(255,255,255,0.04)] text-[10px]">
+        <div className="flex items-center justify-between px-5 py-2.5 bg-[rgba(255,255,255,0.02)] border-t border-[rgba(255,255,255,0.03)] text-[10px]">
           <span className="text-[var(--text-secondary)] font-medium flex items-center gap-1.5">
             <FiSliders size={11} className="text-[var(--accent)]" />
             Sync Offset
@@ -182,7 +186,7 @@ export function LyricsPanel({ isOpen, onClose, onEditLyrics }: LyricsPanelProps)
           <div className="flex items-center gap-2 select-none">
             <button 
               onClick={() => adjustOffset(-0.5)}
-              className="w-5 h-5 rounded-full glass-solid flex items-center justify-center hover:bg-[rgba(255,255,255,0.08)] active:scale-90 transition-all font-bold text-xs"
+              className="w-5 h-5 rounded-full flex items-center justify-center bg-[rgba(255,255,255,0.04)] hover:bg-[rgba(255,255,255,0.08)] active:scale-90 transition-all duration-[350ms] ease-spring font-bold text-xs"
               title="Delay lyrics (show later)"
             >
               -
@@ -192,7 +196,7 @@ export function LyricsPanel({ isOpen, onClose, onEditLyrics }: LyricsPanelProps)
             </span>
             <button 
               onClick={() => adjustOffset(0.5)}
-              className="w-5 h-5 rounded-full glass-solid flex items-center justify-center hover:bg-[rgba(255,255,255,0.08)] active:scale-90 transition-all font-bold text-xs"
+              className="w-5 h-5 rounded-full flex items-center justify-center bg-[rgba(255,255,255,0.04)] hover:bg-[rgba(255,255,255,0.08)] active:scale-90 transition-all duration-[350ms] ease-spring font-bold text-xs"
               title="Speed up lyrics (show earlier)"
             >
               +
@@ -208,6 +212,7 @@ export function LyricsPanel({ isOpen, onClose, onEditLyrics }: LyricsPanelProps)
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 }

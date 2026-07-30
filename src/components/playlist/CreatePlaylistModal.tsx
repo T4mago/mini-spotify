@@ -24,9 +24,10 @@ export function CreatePlaylistModal({ isOpen, onClose, onCreate }: CreatePlaylis
   };
   
   return (
-    <div className="fixed inset-0 bg-black/20 backdrop-blur-sm flex items-center justify-center z-50 animate-fade">
-      <div className="glass-strong w-[400px] rounded-3xl overflow-hidden animate-slide-up">
-        <div className="flex items-center justify-between px-6 py-5 border-b border-[rgba(0,0,0,0.04)]">
+    <div className="fixed inset-0 flex items-center justify-center z-50 animate-fade" style={{ background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)' }}>
+      <div className="double-bezel w-[400px] rounded-[calc(2rem+2px)] overflow-hidden animate-slide-up">
+        <div className="double-bezel-inner overflow-hidden">
+        <div className="flex items-center justify-between px-6 py-5 border-b border-[rgba(255,255,255,0.03)]">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-xl bg-[rgba(0,0,0,0.06)] flex items-center justify-center">
               <FiMusic size={16} className="text-[var(--text-secondary)]" />
@@ -56,10 +57,11 @@ export function CreatePlaylistModal({ isOpen, onClose, onCreate }: CreatePlaylis
             />
           </div>
           <div className="flex justify-end gap-3">
-            <button type="button" onClick={onClose} className="glass-interactive px-5 py-2.5 rounded-full text-xs font-semibold text-[var(--text-secondary)]">Cancel</button>
-            <button type="submit" disabled={!name.trim()} className="bg-[var(--text-primary)] text-white px-5 py-2.5 rounded-full text-xs font-semibold disabled:opacity-40 hover:scale-105 transition-transform shadow-md">Create</button>
+            <button type="button" onClick={onClose} className="px-5 py-2.5 rounded-full text-xs font-semibold text-[var(--text-secondary)] bg-[rgba(255,255,255,0.04)] hover:bg-[rgba(255,255,255,0.08)] transition-all duration-[350ms] ease-spring">Cancel</button>
+            <button type="submit" disabled={!name.trim()} className="bg-[var(--accent)] text-black px-5 py-2.5 rounded-full text-xs font-bold disabled:opacity-40 hover:scale-105 transition-all duration-[400ms] ease-spring active:scale-95">Create</button>
           </div>
         </form>
+      </div>
       </div>
     </div>
   );

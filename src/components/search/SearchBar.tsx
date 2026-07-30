@@ -13,8 +13,8 @@ export function SearchBar() {
   const { ref: lenisRef } = useLenisScroll();
 
   const containerRef = useCallback((node: HTMLDivElement | null) => {
-    scrollRef.current = node;
-    lenisRef.current = node;
+    (scrollRef as React.MutableRefObject<HTMLDivElement | null>).current = node;
+    (lenisRef as React.MutableRefObject<HTMLDivElement | null>).current = node;
   }, []);
   
   useEffect(() => {
@@ -39,7 +39,8 @@ export function SearchBar() {
   }, [filteredSongs, refresh]);
   
   return (
-    <div className="glass-strong flex-1 rounded-3xl flex flex-col overflow-hidden animate-fade">
+    <div className="double-bezel flex-1 rounded-[calc(2rem+2px)] flex flex-col overflow-hidden animate-fade">
+      <div className="double-bezel-inner flex-1 flex flex-col overflow-hidden">
       <div className="px-6 pt-6 pb-4">
         <div className="relative">
           <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-tertiary)]" size={16} />
@@ -95,6 +96,7 @@ export function SearchBar() {
             ))}
           </div>
         )}
+      </div>
       </div>
     </div>
   );

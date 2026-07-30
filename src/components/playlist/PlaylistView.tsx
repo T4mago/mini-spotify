@@ -29,10 +29,11 @@ export function PlaylistView({ playlistId, onBack }: PlaylistViewProps) {
   };
   
   return (
-    <div className="glass-strong flex-1 rounded-3xl flex flex-col overflow-hidden animate-fade">
+    <div className="double-bezel flex-1 rounded-[calc(2rem+2px)] flex flex-col overflow-hidden animate-fade">
+      <div className="double-bezel-inner flex-1 flex flex-col overflow-hidden">
       {/* Header */}
       <div className="px-8 pt-6 pb-5">
-        <button onClick={onBack} className="flex items-center gap-1.5 text-[var(--text-secondary)] hover:text-[var(--text-primary)] mb-5 transition-colors text-xs font-medium">
+          <button onClick={onBack} className="flex items-center gap-1.5 text-[var(--text-secondary)] hover:text-[var(--text-primary)] mb-5 transition-all duration-[350ms] ease-spring text-xs font-medium">
           <FiArrowLeft size={14} />
           Back
         </button>
@@ -51,11 +52,11 @@ export function PlaylistView({ playlistId, onBack }: PlaylistViewProps) {
             {playlist.description && <p className="text-sm text-[var(--text-secondary)] mt-2 line-clamp-2">{playlist.description}</p>}
             <p className="text-xs text-[var(--text-secondary)] mt-2">{playlistSongs.length} songs</p>
             <div className="flex gap-3 mt-4">
-              <button onClick={handlePlayAll} disabled={playlistSongs.length === 0} className="glass-interactive px-5 py-2 rounded-full text-xs font-semibold text-[var(--text-primary)] disabled:opacity-40">
+              <button onClick={handlePlayAll} disabled={playlistSongs.length === 0} className="relative px-5 py-2 rounded-full text-xs font-semibold text-[var(--accent)] bg-[rgba(29,185,84,0.08)] hover:bg-[rgba(29,185,84,0.15)] transition-all duration-[400ms] ease-spring hover:scale-[1.02] active:scale-[0.98] disabled:opacity-40">
                 <FiPlay size={12} className="inline mr-1.5" fill="currentColor" />
                 Play all
               </button>
-              <button onClick={() => { if (window.confirm(`Delete "${playlist.name}"?`)) { deletePlaylist(playlistId); onBack(); } }} className="glass-interactive px-3 py-2 rounded-full text-xs font-semibold text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-all">
+              <button onClick={() => { if (window.confirm(`Delete "${playlist.name}"?`)) { deletePlaylist(playlistId); onBack(); } }} className="relative px-3 py-2 rounded-full text-xs font-semibold text-red-400 hover:text-red-300 hover:bg-[rgba(255,0,0,0.08)] transition-all duration-[400ms] ease-spring active:scale-[0.98]">
                 <FiTrash2 size={12} className="inline mr-1" />
                 Delete
               </button>
@@ -89,6 +90,7 @@ export function PlaylistView({ playlistId, onBack }: PlaylistViewProps) {
             ))}
           </div>
         )}
+      </div>
       </div>
     </div>
   );

@@ -28,8 +28,9 @@ export class ErrorBoundary extends Component<Props, State> {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="h-screen flex items-center justify-center bg-[var(--bg-primary)] text-[var(--text-primary)]">
-          <div className="glass-panel p-8 max-w-md text-center">
+        <div className="h-screen flex items-center justify-center text-[var(--text-primary)]" style={{ background: '#050505' }}>
+          <div className="double-bezel max-w-md rounded-[calc(2rem+2px)]">
+        <div className="double-bezel-inner p-8 text-center">
             <FiAlertTriangle className="mx-auto mb-4 text-yellow-500" size={48} />
             <h2 className="text-xl font-bold mb-2">Something went wrong</h2>
             <p className="text-[var(--text-secondary)] mb-4 text-sm">
@@ -41,6 +42,7 @@ export class ErrorBoundary extends Component<Props, State> {
             >
               Try Again
             </button>
+          </div>
           </div>
         </div>
       );

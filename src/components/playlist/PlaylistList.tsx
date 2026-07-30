@@ -46,7 +46,8 @@ export function PlaylistList({ selectedPlaylistId, onSelectPlaylist }: PlaylistL
   };
   
   return (
-    <div className="glass-strong flex-1 rounded-3xl flex flex-col overflow-hidden animate-fade">
+    <div className="double-bezel flex-1 rounded-[calc(2rem+2px)] flex flex-col overflow-hidden animate-fade">
+      <div className="double-bezel-inner flex-1 flex flex-col overflow-hidden">
       <div className="flex items-center justify-between px-8 pt-8 pb-4">
         <div>
           <h2 className="text-3xl font-extrabold text-[var(--text-primary)] tracking-tight">Playlists</h2>
@@ -57,14 +58,14 @@ export function PlaylistList({ selectedPlaylistId, onSelectPlaylist }: PlaylistL
         <div className="flex gap-2">
           <button
             onClick={() => setIsImportModalOpen(true)}
-            className="glass-interactive flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold text-[var(--text-primary)]"
+            className="relative flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold text-[var(--text-primary)] bg-[rgba(255,255,255,0.04)] hover:bg-[rgba(255,255,255,0.08)] transition-all duration-[400ms] ease-spring hover:scale-[1.02] active:scale-[0.98]"
           >
             <FiDownload size={14} />
             Import
           </button>
           <button
             onClick={() => setIsCreateModalOpen(true)}
-            className="glass-interactive flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold text-[var(--text-primary)]"
+            className="relative flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold text-[var(--text-primary)] bg-[rgba(255,255,255,0.04)] hover:bg-[rgba(255,255,255,0.08)] transition-all duration-[400ms] ease-spring hover:scale-[1.02] active:scale-[0.98]"
           >
             <FiPlus size={14} />
             New
@@ -83,14 +84,14 @@ export function PlaylistList({ selectedPlaylistId, onSelectPlaylist }: PlaylistL
             <div className="flex gap-2">
               <button
                 onClick={() => setIsImportModalOpen(true)}
-                className="glass-interactive px-5 py-2 rounded-full text-xs font-semibold text-[var(--text-primary)]"
+                className="relative px-5 py-2 rounded-full text-xs font-semibold text-[var(--text-primary)] bg-[rgba(255,255,255,0.04)] hover:bg-[rgba(255,255,255,0.08)] transition-all duration-[400ms] ease-spring hover:scale-[1.02] active:scale-[0.98]"
               >
                 <FiDownload size={13} className="inline mr-1.5" />
                 Import from Spotify
               </button>
               <button
                 onClick={() => setIsCreateModalOpen(true)}
-                className="glass-interactive px-5 py-2 rounded-full text-xs font-semibold text-[var(--text-primary)]"
+                className="relative px-5 py-2 rounded-full text-xs font-semibold text-[var(--text-primary)] bg-[rgba(255,255,255,0.04)] hover:bg-[rgba(255,255,255,0.08)] transition-all duration-[400ms] ease-spring hover:scale-[1.02] active:scale-[0.98]"
               >
                 <FiPlus size={13} className="inline mr-1.5" />
                 Create Playlist
@@ -103,7 +104,7 @@ export function PlaylistList({ selectedPlaylistId, onSelectPlaylist }: PlaylistL
               <button
                 key={playlist.id}
                 onClick={() => onSelectPlaylist(playlist.id)}
-                className={`glass-interactive p-5 text-left rounded-3xl animate-fade stagger-${Math.min(i + 1, 6)}
+                className={`relative p-5 text-left rounded-[2rem] bg-[rgba(255,255,255,0.02)] hover:bg-[rgba(255,255,255,0.04)] ring-1 ring-white/5 transition-all duration-[400ms] ease-spring animate-fade stagger-${Math.min(i + 1, 6)}
                   ${selectedPlaylistId === playlist.id ? 'ring-2 ring-[var(--accent)]' : ''}`}
               >
                 <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[rgba(0,0,0,0.04)] to-[rgba(0,0,0,0.08)] flex items-center justify-center mb-3">
@@ -138,6 +139,7 @@ export function PlaylistList({ selectedPlaylistId, onSelectPlaylist }: PlaylistL
         playlistName={importedPlaylistName}
         tracks={importedTracks}
       />
+      </div>
     </div>
   );
 }

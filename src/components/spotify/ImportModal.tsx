@@ -25,9 +25,10 @@ export function ImportModal({ isOpen, onClose, onComplete }: ImportModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/20 backdrop-blur-sm flex items-center justify-center z-50 animate-fade">
-      <div className="glass-strong w-[420px] rounded-3xl overflow-hidden animate-slide-up">
-        <div className="flex items-center justify-between px-6 py-5 border-b border-[rgba(0,0,0,0.04)]">
+    <div className="fixed inset-0 flex items-center justify-center z-50 animate-fade" style={{ background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)' }}>
+      <div className="double-bezel w-[420px] rounded-[calc(2rem+2px)] overflow-hidden animate-slide-up">
+        <div className="double-bezel-inner overflow-hidden">
+        <div className="flex items-center justify-between px-6 py-5 border-b border-[rgba(255,255,255,0.03)]">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-xl bg-[#1db954] flex items-center justify-center"><FiMusic size={16} className="text-white" /></div>
             <h3 className="font-bold text-sm text-[var(--text-primary)]">Import from Spotify</h3>
@@ -41,13 +42,14 @@ export function ImportModal({ isOpen, onClose, onComplete }: ImportModalProps) {
             placeholder="https://open.spotify.com/playlist/..." autoFocus />
           {error && <p className="text-red-500 text-xs mt-2">{error}</p>}
           <div className="flex justify-end gap-3 mt-5">
-            <button onClick={onClose} className="glass-interactive px-5 py-2.5 rounded-full text-xs font-semibold text-[var(--text-secondary)]">Cancel</button>
+            <button onClick={onClose} className="px-5 py-2.5 rounded-full text-xs font-semibold text-[var(--text-secondary)] bg-[rgba(255,255,255,0.04)] hover:bg-[rgba(255,255,255,0.08)] transition-all duration-[350ms] ease-spring">Cancel</button>
             <button onClick={handleImport} disabled={isImporting || !url.trim()}
-              className="bg-[var(--text-primary)] text-white px-5 py-2.5 rounded-full text-xs font-semibold flex items-center gap-1.5 disabled:opacity-40 hover:scale-105 transition-transform shadow-md">
+              className="bg-[var(--accent)] text-black px-5 py-2.5 rounded-full text-xs font-bold flex items-center gap-1.5 disabled:opacity-40 hover:scale-105 transition-all duration-[400ms] ease-spring active:scale-95">
               {isImporting ? <><div className="animate-spin w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full" /> Importing...</> : <><FiExternalLink size={13} /> Import</>}
             </button>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );
