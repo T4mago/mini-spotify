@@ -159,38 +159,20 @@ export function SongRow({ song, index, onPlay }: SongRowProps) {
         {formatTime(song.duration)} sec
       </span>
 
-      <div className="w-24 flex items-center justify-end gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-[400ms] ease-spring pr-1 flex-shrink-0">
+      <div className="flex items-center justify-end pr-1 flex-shrink-0">
         <button
           onClick={(e) => {
             e.stopPropagation();
             useAudio.getState().playNext(song);
             toast.success(`"${song.title}" will play next`, { duration: 1500 });
           }}
-          className="w-7 h-7 flex items-center justify-center rounded-lg text-[var(--text-tertiary)] hover:text-[var(--accent)] hover:bg-[rgba(255,255,255,0.03)] transition-all duration-[400ms] ease-spring"
+          className="md:opacity-0 md:group-hover:opacity-100 w-7 h-7 flex items-center justify-center rounded-lg text-[var(--text-tertiary)] hover:text-[var(--accent)] hover:bg-[rgba(255,255,255,0.03)] transition-all duration-[400ms] ease-spring"
           title="Play next"
         >
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="12" cy="12" r="10" />
             <line x1="12" y1="8" x2="12" y2="16" />
             <line x1="8" y1="12" x2="16" y2="12" />
-          </svg>
-        </button>
-        <button
-          onClick={(e) => e.stopPropagation()}
-          className="w-7 h-7 flex items-center justify-center rounded-lg text-[var(--text-tertiary)] hover:text-[var(--accent)] hover:bg-[rgba(255,255,255,0.03)] transition-all duration-[400ms] ease-spring"
-        >
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
-          </svg>
-        </button>
-        <button
-          onClick={(e) => e.stopPropagation()}
-          className="w-7 h-7 flex items-center justify-center rounded-lg text-[var(--text-tertiary)] hover:text-[var(--text-primary)] hover:bg-[rgba(255,255,255,0.03)] transition-all duration-[400ms] ease-spring"
-        >
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="12" cy="12" r="1" />
-            <circle cx="19" cy="12" r="1" />
-            <circle cx="5" cy="12" r="1" />
           </svg>
         </button>
       </div>
